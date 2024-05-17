@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
+// Sirve para procesar formularios
 import { FormsModule } from '@angular/forms';
 
 
@@ -29,6 +30,8 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
+
+// Se declara la clase del componente que proporciona la lógica y los datos, en este caso el nombre asociado al componente.
 export class AppComponent {
   title = 'abono-proyect';
 }
