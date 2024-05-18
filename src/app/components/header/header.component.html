@@ -1,3 +1,15 @@
-<div class="card">
-    <p-tabMenu [model]="items" />
-</div>
+<header class="header">
+    <div>
+        <a [routerLink]="['/home']">
+            <img src="../../../assets/AbonoLogoUpscale.png" alt="Logo" width="190px">
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a [routerLink]="['/home']">Inicio</a></li>
+            <li><a [routerLink]="['/home']">Mapa</a></li>
+            <li><a [routerLink]="['/home']">Perfil</a></li>
+            <li><input type="text" placeholder="🔍      Buscar"></li>
+        </ul>
+    </nav>
+</header>

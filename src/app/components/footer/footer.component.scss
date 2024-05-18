@@ -67,26 +67,7 @@
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
   }
   
-  .nga-btn-social i:hover {
-    color: black;
-  }
-  
-  .nga-btn-github {
-    background-color: #333;
-  }
-  
-  .nga-btn-gitlab {
-    background-color: #ff4500;
-  }
-  
-  .nga-btn-linkedin {
-    background-color: #0082ca;
-  }
-  
-  .nga-btn-twitter {
-    background-color: #55acee;
-  }
-  
+
   a {
     transition: 0.2s;
     border-radius: 5px;
@@ -96,7 +77,7 @@
     transform: scale(1.2);
     color: #4A8891;
     text-decoration: underline;
-    text-decoration-color: #63ddf0 !important;   
+    text-decoration-color: #ca382d !important;   
     text-decoration-thickness: 2px !important;
   }
   

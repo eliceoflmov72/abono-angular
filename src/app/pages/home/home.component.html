@@ -1,0 +1,27 @@
+<div class="card">
+  <p-panel [toggleable]="true">
+    <ng-template pTemplate="header">
+      <div class="flex align-items-center gap-2">
+        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" size="large"
+          shape="circle" />
+        <span class="font-bold">Ana Ramirez</span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="flex flex-wrap align-items-center justify-content-between gap-3">
+        <div class="flex align-items-center gap-2">
+          <p-button icon="pi pi-user" rounded="true" text="true"></p-button>
+          <p-button icon="pi pi-bookmark" severity="secondary" rounded="true" text="true"></p-button>
+        </div>
+        <span class="p-text-secondary">Hace aproximadamente 1 año        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="icons">
+      <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+    </ng-template>
+    <p class="m-0">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.
+    </p>
+  </p-panel>
+</div>
