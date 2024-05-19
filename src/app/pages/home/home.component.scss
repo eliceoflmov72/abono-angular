@@ -6,4 +6,100 @@
     margin: auto;
     margin-bottom: 1em;
 }
+.carousel-caption h1{
+    text-shadow: 0 0 50px #000,
+                 0 0 50px #000,
+                 0 0 50px #000;
+}
 
+
+/* Padding below the footer and lighter body text */
+
+body {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    color: #5a5a5a;
+  }
+  
+  /* Clase base del carrusel */
+  .carousel {
+    margin-bottom: 4rem;
+  }
+  /* Dado que se posiciona la imagen, necesitamos ayudar al pie de figura */
+  .carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+  }
+  
+  /* Declarar alturas debido a la posicionamiento del elemento img */
+  .carousel-item {
+    height: 32rem;
+  }
+  .carousel-item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem;
+  }
+
+  // Contenido de marketing
+
+  img {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Alinear el texto al centro en las tres columnas debajo del carrusel */
+  .marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .marketing h2 {
+    font-weight: 400;
+  }
+  /* rtl:begin:ignore */
+  .marketing .col-lg-4 p {
+    margin-right: .75rem;
+    margin-left: .75rem;
+  }
+  /* rtl:end:ignore */
+  
+  // Features section
+  .featurette-divider {
+    margin: 5rem 0; /* Espaciar el contenido del carrusel de Bootstrap más */
+  }
+  
+  /* Enjutear los encabezados de marketing */
+  .featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    /* rtl:remove */
+    letter-spacing: -.05rem;
+  }
+  
+  
+  /* CSS RESPONSIVO
+  -------------------------------------------------- */
+  
+  @media (min-width: 40em) {
+    /* Aumentar el tamaño del contenido del carrusel */
+    .carousel-caption p {
+      margin-bottom: 1.25rem;
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+  
+    .featurette-heading {
+      font-size: 50px;
+    }
+  }
+  
+  @media (min-width: 62em) {
+    .featurette-heading {
+      margin-top: 7rem;
+    }
+  }
+  

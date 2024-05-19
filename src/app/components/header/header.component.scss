@@ -9,7 +9,7 @@ header {
     border: 1px solid #DEE2E6;
     background-color: #F8F9FA;
     width: 100%;
-    font-size: clamp(1em, 1.2vw, 1.2rem);
+    font-size: clamp(1em, 1.1vw, 1.1rem);
 
 }
 
@@ -45,6 +45,7 @@ nav {
 a {
     text-decoration: none;
     color: black;
+    font-weight: bold;
 }
 
 nav ul li a:hover {

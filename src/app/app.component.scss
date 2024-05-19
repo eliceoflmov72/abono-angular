@@ -4,7 +4,6 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Sora", sans-serif ;
-  gap: 1rem;
   display: grid;
   // grid-template-areas:
   //   "header header"
@@ -21,4 +20,8 @@
 .content {
   display: block;
   grid-area: content;
+}
+
+.leaflet-control-attribution {
+  display: none; /* Oculta el control de atribución */
 }
