@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { PanelModule } from 'primeng/panel';
 import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
@@ -10,7 +10,7 @@ import { MenuModule } from 'primeng/menu';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [CommonModule, PanelModule, AvatarModule, ButtonModule, MenubarModule, MenuModule],
+  imports: [PanelModule, AvatarModule, ButtonModule, MenubarModule, MenuModule],
   standalone: true
 })
 

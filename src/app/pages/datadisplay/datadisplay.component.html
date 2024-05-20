@@ -1,0 +1,26 @@
+<h2>Locations</h2>
+<ul>
+    <li *ngFor="let location of locations">
+        Latitude: {{location.latitude}}, Longitude: {{location.longitude}}
+    </li>
+</ul>
+
+<h2>Generic Bus</h2>
+<div *ngIf="genericBus">
+    <div *ngFor="let provider of genericBus">
+        <h3>{{provider.providerName}}</h3>
+        <div *ngFor="let route of provider.routes">
+            <h4>{{route.name}}</h4>
+            <p>{{route.description}}</p>
+            <p>Price: {{route.price}}</p>
+            <p>Valid Period: {{route.valid_period.start_date | date:'shortDate'}} to {{route.valid_period.end_date |
+                date:'shortDate'}}</p>
+            <img [src]="route.image" alt="{{route.name}}" width="200">
+            <ul>
+                <li *ngFor="let coord of route.coordinates">
+                    Latitude: {{coord.latitude}}, Longitude: {{coord.longitude}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

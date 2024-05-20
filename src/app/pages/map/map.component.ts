@@ -9,12 +9,12 @@ import * as L from 'leaflet';
 })
 
 export class MapComponent implements AfterViewInit {
-  private map ?: L.Map;
+  private map?: L.Map;
 
   private initMap(): void {
     this.map = L.map('map', {
       attributionControl: false,
-      center: [ 40.416775, -3.70379 ],
+      center: [40.416775, -3.70379],
       zoom: 6
     });
 

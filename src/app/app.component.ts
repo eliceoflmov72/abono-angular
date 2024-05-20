@@ -23,9 +23,9 @@ import { FormsModule } from '@angular/forms';
   [
     HeaderComponent,
     SidebarComponent,
-    RouterOutlet,
     FooterComponent,
-    FormsModule
+    FormsModule,
+    RouterOutlet
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
