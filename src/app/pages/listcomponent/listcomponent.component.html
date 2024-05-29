@@ -1,0 +1,12 @@
+<!-- listcomponent.component.html -->
+<div *ngIf="data.length > 0">
+    <ul>
+      <li *ngFor="let item of data" (click)="onSelect(item)">
+        {{ item.name }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="data.length === 0">
+    <p>No data available.</p>
+  </div>
+  

@@ -1,15 +1,37 @@
-<header class="header">
-    <div>
-        <a [routerLink]="['/']">
-            <img src="../../../assets/AbonoLogoUpscale.png" alt="Logo" width="190px">
-        </a>
+<nav class="navbar navbar-expand-md navbar-light bg-light" aria-label="Fourth navbar example">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="../../../assets/AbonoLogoUpscale.png" alt="Logo" width="175px"[style]="{'margin-right': '3vw'}"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+            aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+            <ul class="navbar-nav me-0">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/home']">Inicio</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/Mapa']">Mapa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/home']">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/datadisplay']">Información</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/listcomponent']">Listado</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/profile']">
+                        <img src="../../../assets/carretera_vista_baja.webp" alt="imagen_perfil" class="mr-2 profile-image" >
+                        Nombre Ejemplo
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <nav>
-        <ul>
-            <li><a [routerLink]="['/']">Inicio</a></li>
-            <li><a [routerLink]="['/Mapa']">Mapa</a></li>
-            <li><a [routerLink]="['/home']">Perfil</a></li>
-            <li><a [routerLink]="['/datadisplay']">Información</a></li>
-        </ul>
-    </nav>
-</header>
+</nav>
