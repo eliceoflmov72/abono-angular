@@ -1,13 +1,13 @@
 @if (data.length > 0) {
-  <div class="cards">
+  <div class="cards mt-6 mb-6">
     @for (item of data; track item) {
       <div class="card">
         <h2>{{ item.name }}</h2>
         <p>{{ item.description }}</p>
-        <p><strong>Company:</strong> {{ item.company }}</p>
-        <p><strong>Type:</strong> {{ item.type }}</p>
-        <p><strong>Price:</strong> {{ item.price }}</p>
-        <img [src]="item.image" alt="{{ item.name }}" width="200">
+        <p><strong>Compañía:</strong><br />{{ item.company }}</p>
+        <p><strong>Tipo:</strong><br />{{ item.type }}</p>
+        <p><strong>Price:</strong><br />{{ item.price }}</p>
+        <img [src]="item.image" alt="{{ item.name }}" width="200" />
         <div>
           <h3>Coordinates:</h3>
           <ul>
@@ -20,15 +20,15 @@
         </div>
         <div>
           <h3>Valid Period:</h3>
-          <p>Start Date: {{ item.valid_period.start_date}}</p>
-          <p>End Date: {{ item.valid_period.end_date}}</p>
+          <p>Start Date: {{ item.valid_period.start_date }}</p>
+          <p>End Date: {{ item.valid_period.end_date }}</p>
         </div>
       </div>
     }
   </div>
 }
 @if (data.length === 0) {
-  <div>
-    <p>No data available.</p>
+  <div class="charging">
+    <p>Cargando datos...</p>
   </div>
 }

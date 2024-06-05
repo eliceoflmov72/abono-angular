@@ -5,18 +5,27 @@
   margin-bottom: 1em;
 }
 
+div.leaflet-popup-content-wrapper {
+  border-radius: 0px !important;
 
-/* Padding below the footer and lighter body text */
+  div.leaflet-popup-tip {
+    border-radius: 0px !important;
+  }
+
+  div.leaflet-popup-content {
+    padding: 0px !important;
+  }
+}
 
 body {
   padding-top: 3rem;
   padding-bottom: 3rem;
-
 }
 
 /* Clase base del carrusel */
 .carousel {
   margin-bottom: 4rem;
+  user-select: none;
 }
 
 /* Dado que se posiciona la imagen, necesitamos ayudar al pie de figura */
@@ -28,24 +37,26 @@ body {
 /* Declarar alturas debido a la posicionamiento del elemento img */
 .carousel-item {
   height: 32rem;
+  text-shadow: 0 0 5px rgba(#ffffff, 0.7);
 }
 
-.carousel-item>img {
+.carousel-item > img {
   position: absolute;
   top: 0;
   left: 0;
   min-width: 100%;
   height: 32rem;
-  filter: brightness(70%);
+  filter: brightness(65%);
   transition: filter 0.3s ease-in-out;
 }
 
-.carousel-inner:hover>.carousel-item>img {
-  filter: brightness(80%);
+.carousel-inner:hover > .carousel-item > img {
+  filter: brightness(75%);
 }
 
-
-
+.carousel-inner:hover {
+  text-shadow: 0 0 1px rgba(black, 1);
+}
 
 // Contenido de marketing
 
@@ -54,7 +65,6 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-
 }
 
 /* Alinear el texto al centro en las tres columnas debajo del carrusel */
@@ -67,35 +77,58 @@ img {
   font-weight: 400;
 }
 
-/* rtl:begin:ignore */
 .marketing .col-lg-4 p {
-  margin-right: .75rem;
-  margin-left: .75rem;
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
 }
-
-/* rtl:end:ignore */
 
 // Features section
 .featurette-divider {
   margin: 5rem 0;
-  /* Espaciar el contenido del carrusel de Bootstrap más */
 }
 
 /* Ejecutar los encabezados de marketing */
 .featurette-heading {
   font-weight: 300;
   line-height: 1;
-  /* rtl:remove */
-  letter-spacing: -.05rem;
+  letter-spacing: -0.05rem;
 }
 
+@media (max-width: 768px) {
+  .carousel-item > img,
+  .carrousel-item {
+    height: 25rem;
+  }
 
-/* CSS RESPONSIVO
-  -------------------------------------------------- */
+  div.carousel-caption {
+    position: relative;
+    width: 75%;
+    top: 4rem;
+    text-align: left;
+    font-size: 1em;
+  }
+
+  .carousel-item > img {
+    filter: brightness(76%);
+  }
+
+  .carousel-item {
+    text-shadow: 0 0 0px black;
+  }
+
+  .carousel-item:not(:last-of-type(button)) {
+    height: 20rem;
+    text-shadow: 0 0 3px rgba(black, 1);
+  }
+
+  .carousel {
+    margin-bottom: -3rem;
+  }
+}
+
+/* CSS responsivo */
 
 @media (min-width: 40em) {
-
-  /* Aumentar el tamaño del contenido del carrusel */
   .carousel-caption p {
     margin-bottom: 1.25rem;
     font-size: 1.25rem;
@@ -112,5 +145,3 @@ img {
     margin-top: 7rem;
   }
 }
-
-

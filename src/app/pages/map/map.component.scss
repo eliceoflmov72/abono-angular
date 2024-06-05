@@ -1,12 +1,83 @@
 .map-container {
-    height: 89vh;
-    background-color: #A9D3DF;
+  height: 90vh;
+  background-color: #a9d3df;
+}
+
+.map-frame {
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+}
+
+.remove-marker-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.search-box {
+  position: absolute;
+  top: 105px;
+  left: 60px;
+  z-index: 9999;
+  width: 300px;
+  text-align: center;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.search-results li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.search-results li:hover {
+  background-color: #f1f1f1;
+}
+
+@media screen and (max-width: 768px) {
+  .search-box {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0px;
   }
-  
-  .map-frame {
-    height: 100%;
+
+  .search-box input {
+    border-radius: 0px;
+    border: none;
+    box-shadow: none;
+    padding: 0.6rem;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
   }
-  
-  #map {
-    height: 100%;
-  }
+}

@@ -11,9 +11,8 @@ import { MenuModule } from 'primeng/menu';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   imports: [PanelModule, AvatarModule, ButtonModule, MenubarModule, MenuModule],
-  standalone: true
+  standalone: true,
 })
-
 export class HomeComponent implements OnInit {
   items: { label?: string; icon?: string; separator?: boolean }[] = [];
 
@@ -22,7 +21,7 @@ export class HomeComponent implements OnInit {
       { label: 'Refresh', icon: 'pi pi-refresh' },
       { label: 'Search', icon: 'pi pi-search' },
       { separator: true },
-      { label: 'Delete', icon: 'pi pi-times' }
+      { label: 'Delete', icon: 'pi pi-times' },
     ];
   }
 }

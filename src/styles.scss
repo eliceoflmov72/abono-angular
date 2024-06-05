@@ -1,17 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
-
 :root {
-  --color-combine: #505A8A;
-
-  --red-icon: #C32928; // dark red
-  --color-secondary: #FFD700; // gold
+  --color-combine: #505a8a;
+  --red-icon: #c32928;
+  --color-secondary: #ffd700;
   --color-tertiary: #333333;
 
   .btn-primary {
     background-color: var(--red-icon);
     border-color: var(--red-icon);
     color: whitesmoke;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    transition:
+      background-color 0.3s,
+      color 0.3s,
+      border-color 0.3s;
   }
 
   .btn-primary:hover {
@@ -24,7 +24,9 @@
     background-color: var(--red-icon);
     border-color: var(--red-icon);
     color: var(--color-tertiary);
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    transition:
+      background-color 0.3s,
+      color 0.3s,
+      border-color 0.3s;
   }
 }
-

@@ -1,0 +1,28 @@
+:host {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.row.justify-content-center {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+.form-group {
+  margin-bottom: 2em;
+}

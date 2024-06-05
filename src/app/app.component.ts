@@ -1,37 +1,39 @@
-// Importa de docorador 'Component' del módulo '@angular/core'
-/** Sirve para crear componentes de Angular */
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 
-// Importa de docorador 'RouterOutlet' del módulo '@angular/router'
-/** Sirve para crear rutas de Angular */
-import {RouterOutlet } from '@angular/router';
-
-// Importamos los componentes que vamos a utilizar en el proyecto.
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 
-// Sirve para procesar formularios
-import { FormsModule } from '@angular/forms';
-
-
-// El decorador 'Component' toma como objeto un argumento
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: 
-  [
+  imports: [
     HeaderComponent,
-    SidebarComponent,
     FooterComponent,
     FormsModule,
-    RouterOutlet
+    RouterOutlet,
+    CommonModule,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
-
-// Se declara la clase del componente que proporciona la lógica y los datos, en este caso el nombre asociado al componente.
 export class AppComponent {
   title = 'abono-proyect';
+
+  showHeaderFooter: boolean = true;
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const hiddenRoutes = ['/auth/register', '/auth/login'];
+        this.showHeaderFooter = !hiddenRoutes.some((route) =>
+          event.urlAfterRedirects.includes(route),
+        );
+      }
+    });
+  }
 }

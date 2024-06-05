@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Data } from './data_crud.model';
+import { Data } from './pass.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CrudService {
-  private apiUrl = 'http://localhost:3000/api/passes'; // Verifica que esta URL es correcta
+  private apiUrl = 'http://localhost:3000/api/passes';
 
   constructor(private http: HttpClient) {}
 
@@ -16,7 +16,6 @@ export class CrudService {
   }
 
   getDataById(id: string): Observable<Data> {
-    console.log('Fetching data by ID:', id); // Verificar llamada
     return this.http.get<Data>(`${this.apiUrl}/${id}`);
   }
 

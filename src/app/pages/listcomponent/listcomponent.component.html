@@ -1,12 +1,28 @@
-<!-- listcomponent.component.html -->
-<div *ngIf="data.length > 0">
-    <ul>
-      <li *ngFor="let item of data" (click)="onSelect(item)">
-        {{ item.name }}
-      </li>
-    </ul>
-  </div>
-  <div *ngIf="data.length === 0">
-    <p>No data available.</p>
-  </div>
-  
+<div class="panel-bar mt-6">
+  <button (click)="onCreateNew()" class="btn1 btn-primary">
+    Crear Nuevo Pase
+  </button>
+  <button
+    (click)="onCreateNew()"
+    class="btn2 btn-primary"
+    style="font-size: 1.3em; padding: 0"
+  >
+    <i class="fa-solid fa-plus"></i>
+  </button>
+  <input
+    placeholder="Buscar..."
+    [(ngModel)]="searchTerm"
+    (input)="onSearch()"
+  />
+</div>
+<div *ngIf="filteredData.length > 0" class="mt-4">
+  <p>{{ filteredData.length }} resultados encontrados</p>
+  <ul>
+    <li class="py-4" *ngFor="let item of filteredData" (click)="onSelect(item)">
+      {{ item.name }}
+    </li>
+  </ul>
+</div>
+<div *ngIf="filteredData.length === 0">
+  <p>No hay datos disponibles.</p>
+</div>

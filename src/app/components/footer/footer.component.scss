@@ -4,29 +4,27 @@
 }
 
 .container-fluid {
-  background-image: url('../../../assets/carretera_aerea_1.webp');
+  background-image: url("../../../assets/carretera_aerea_1.webp");
   background-size: cover;
   background-position: bottom;
   filter: grayscale(50%) hue-rotate(110deg);
   transition: 0.3s ease-in-out;
+  user-select: none;
 
   &:hover {
     filter: grayscale(0%);
-    cursor: pointer;
   }
 }
 
 .container-fluid:hover {
   filter: grayscale(0%);
-  cursor: pointer;
 }
 
-
-.rrss a i:hover{
-    transform: scale(1.5);
-    transition: 0.3s ease-in-out;
-    color: var(--color-secondary);
-    text-shadow: 0 0 5px rgba(#ffffff, 0.7);
+.rrss a i:hover {
+  transform: scale(1.5);
+  transition: 0.3s ease-in-out;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(#ffffff, 0.7);
 }
 
 .nga-footer {
@@ -36,9 +34,8 @@
 
 .nga-footer a {
   color: white;
-  text-decoration: none
+  text-decoration: none;
 }
-
 
 a {
   transition: 0.2s;
@@ -51,3 +48,10 @@ a {
   }
 }
 
+@media (max-width: 768px) {
+  .container-fluid {
+    position: relative;
+    top: 2.6rem;
+    left: 0;
+  }
+}

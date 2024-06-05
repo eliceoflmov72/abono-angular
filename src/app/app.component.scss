@@ -1,29 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
 
 :host {
   margin: 0;
   box-sizing: border-box;
-  font-family: "Sora", sans-serif ;
+  font-family: "Sora", sans-serif;
   display: grid;
-  // grid-template-areas:
-  //   "header header"
-  //   "content content"
-  //   "footer footer";
-  grid-template-areas: 
+  grid-template-areas:
     "header"
     "content"
     "footer";
 
   grid-template-columns: 1fr;
-
 }
-
 
 .content {
   display: block;
   grid-area: content;
 }
 
+/* Ocultar la atribución */
 .leaflet-control-attribution {
-  display: none; /* Oculta el control de atribución */
+  display: none;
+}
+
+.charging {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
 }

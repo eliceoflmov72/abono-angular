@@ -1,60 +1,71 @@
-<!-- detailcomponent.component.html -->
-<div *ngIf="data; else loading">
-    <h1>Detalles del Pase</h1>
+<div *ngIf="data; else loading" class="container">
+  <button
+    (click)="onBack()"
+    class="btn btn-secondary mb-6"
+    style="background-color: transparent; border: none"
+  >
+    <i
+      class="bi bi-arrow-left-circle-fill"
+      style="color: #99b8b2; font-size: 2rem"
+    ></i>
+  </button>
+  <h1>{{ isNew ? "Crear Nuevo Pase" : "Detalles del Pase" }}</h1>
+  <div class="form-item">
+    <label>Compañía:</label>
+    <input [(ngModel)]="data.company" />
+  </div>
+  <div class="form-item">
+    <label>Nombre:</label>
+    <input [(ngModel)]="data.name" />
+  </div>
+  <div class="form-item">
+    <label>Descripción:</label>
+    <textarea [(ngModel)]="data.description"></textarea>
+  </div>
+  <div class="form-item">
+    <label>Periodo de validez:</label>
     <div>
-      <label>Compañía:</label>
-      <input [(ngModel)]="data.company" />
+      <label>Inicio:</label>
+      <input type="date" [(ngModel)]="data.valid_period.start_date" />
     </div>
     <div>
-      <label>Nombre:</label>
-      <input [(ngModel)]="data.name" />
-    </div>
-    <div>
-      <label>Descripción:</label>
-      <textarea [(ngModel)]="data.description"></textarea>
-    </div>
-    <div>
-      <label>Periodo de validez:</label>
-      <div>
-        <label>Inicio:</label>
-        <input type="date" [(ngModel)]="data.valid_period.start_date" />
-      </div>
-      <div>
-        <label>Fin:</label>
-        <input type="date" [(ngModel)]="data.valid_period.end_date" />
-      </div>
-    </div>
-    <div>
-      <label>Precio:</label>
-      <input type="number" [(ngModel)]="data.price" />
-    </div>
-    <div>
-      <label>Imagen URL:</label>
-      <input [(ngModel)]="data.image" />
-    </div>
-    <div>
-      <label>Tipo:</label>
-      <input [(ngModel)]="data.type" />
-    </div>
-    <div>
-      <label>Coordenadas:</label>
-      <div *ngFor="let coordinate of data.coordinates; let i = index">
-        <div>
-          <label>Latitud:</label>
-          <input [(ngModel)]="coordinate.latitude" />
-          <label>Longitud:</label>
-          <input [(ngModel)]="coordinate.longitude" />
-        </div>
-      </div>
-    </div>
-    <div>
-      <button (click)="onUpdate()">Actualizar</button>
-      <button (click)="onDelete()">Eliminar</button>
+      <label>Fin:</label>
+      <input type="date" [(ngModel)]="data.valid_period.end_date" />
     </div>
   </div>
-  <ng-template #loading>
-    <div>
-      <p>Cargando datos...</p>
+  <div class="form-item">
+    <label>Precio:</label>
+    <input type="number" [(ngModel)]="data.price" />
+  </div>
+  <div class="form-item">
+    <label>Imagen URL:</label>
+    <input [(ngModel)]="data.image" />
+  </div>
+  <div class="form-item">
+    <label>Tipo:</label>
+    <input [(ngModel)]="data.type" />
+  </div>
+  <div class="form-item mb-6">
+    <label class="mb-4" style="font-style: italic">Coordenadas</label>
+    <div *ngFor="let coordinate of data.coordinates; let i = index">
+      <hr class="my-4" style="border: 1px solid black; width: 100%" />
+      <div>
+        <label class="mb-4"> - Posición nº {{ i + 1 }} - </label>
+        <label>Latitud:</label>
+        <input [(ngModel)]="coordinate.latitude" />
+        <label>Longitud:</label>
+        <input [(ngModel)]="coordinate.longitude" />
+      </div>
     </div>
-  </ng-template>
-  
+  </div>
+  <hr class="my-4" style="border: 1px solid black; width: 100%" />
+  <div class="buttons-actions">
+    <button (click)="onSave()">{{ isNew ? "Crear" : "Actualizar" }}</button>
+    <button *ngIf="!isNew" (click)="onDelete()">Eliminar</button>
+  </div>
+</div>
+<ng-template #loading>
+  <div>
+    <p>Cargando datos...</p>
+  </div>
+</ng-template>
