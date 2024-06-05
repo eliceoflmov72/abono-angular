@@ -1,7 +1,5 @@
 <div class="panel-bar mt-6">
-  <button (click)="onCreateNew()" class="btn1 btn-primary">
-    Crear Nuevo Pase
-  </button>
+  <button (click)="onCreateNew()" class="btn1 btn-primary">Crear abono</button>
   <button
     (click)="onCreateNew()"
     class="btn2 btn-primary"
@@ -10,7 +8,7 @@
     <i class="fa-solid fa-plus"></i>
   </button>
   <input
-    placeholder="Buscar..."
+    placeholder="Nombre del abono"
     [(ngModel)]="searchTerm"
     (input)="onSearch()"
   />

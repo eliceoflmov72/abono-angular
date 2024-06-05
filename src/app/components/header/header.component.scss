@@ -5,7 +5,8 @@
   width: 100%;
   text-align: center;
   user-select: none;
-  font-size: clamp(1rem, 1.1vw, 1.2rem);
+  // font-size: clamp(1rem, 1.1vw, 1.2rem);
+  font-size: clamp(0.9rem, 110%, 4rem);
 }
 
 .container-fluid {

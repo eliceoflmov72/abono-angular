@@ -29,4 +29,13 @@
       color 0.3s,
       border-color 0.3s;
   }
+
+  .dropdown-menu {
+    width: 100% !important;
+  }
+  a.dropdown-item:hover {
+    background-color: transparent !important;
+    translate: -2px 2px;
+    scale: 1;
+  }
 }

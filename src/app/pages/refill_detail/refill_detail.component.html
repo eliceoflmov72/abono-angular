@@ -9,7 +9,7 @@
       style="color: #99b8b2; font-size: 2rem"
     ></i>
   </button>
-  <h1>{{ isNew ? "Crear Nuevo Pase" : "Detalles del Pase" }}</h1>
+  <h1 class="mb-6">Detalles de {{ data.name }}</h1>
   <div class="form-item">
     <label>Compañía:</label>
     <input [(ngModel)]="data.company" />
@@ -23,27 +23,16 @@
     <textarea [(ngModel)]="data.description"></textarea>
   </div>
   <div class="form-item">
-    <label>Periodo de validez:</label>
-    <div>
-      <label>Inicio:</label>
-      <input type="date" [(ngModel)]="data.valid_period.start_date" />
-    </div>
-    <div>
-      <label>Fin:</label>
-      <input type="date" [(ngModel)]="data.valid_period.end_date" />
-    </div>
-  </div>
-  <div class="form-item">
-    <label>Precio:</label>
-    <input type="number" [(ngModel)]="data.price" />
-  </div>
-  <div class="form-item">
     <label>Imagen URL:</label>
     <input [(ngModel)]="data.image" />
   </div>
   <div class="form-item">
     <label>Tipo:</label>
     <input [(ngModel)]="data.type" />
+  </div>
+  <div class="form-item">
+    <label>Pass ID:</label>
+    <input [(ngModel)]="data.passId" />
   </div>
   <div class="form-item mb-6">
     <label class="mb-4" style="font-style: italic">Coordenadas</label>

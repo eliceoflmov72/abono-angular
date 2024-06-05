@@ -1,33 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Data } from './pass.model';
+import { Pass } from './pass.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CrudService {
+export class PassCrudService {
   private apiUrl = 'http://localhost:3000/api/passes';
 
   constructor(private http: HttpClient) {}
 
-  getData(): Observable<Data[]> {
-    return this.http.get<Data[]>(this.apiUrl);
+  getPass(): Observable<Pass[]> {
+    return this.http.get<Pass[]>(this.apiUrl);
   }
 
-  getDataById(id: string): Observable<Data> {
-    return this.http.get<Data>(`${this.apiUrl}/${id}`);
+  getPassById(id: string): Observable<Pass> {
+    return this.http.get<Pass>(`${this.apiUrl}/${id}`);
   }
 
-  createData(data: Data): Observable<Data> {
-    return this.http.post<Data>(this.apiUrl, data);
+  createPass(data: Pass): Observable<Pass> {
+    return this.http.post<Pass>(this.apiUrl, data);
   }
 
-  updateData(id: string, data: Data): Observable<Data> {
-    return this.http.put<Data>(`${this.apiUrl}/${id}`, data);
+  updatePass(id: string, data: Pass): Observable<Pass> {
+    return this.http.put<Pass>(`${this.apiUrl}/${id}`, data);
   }
 
-  deleteData(id: string): Observable<void> {
+  deletePass(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

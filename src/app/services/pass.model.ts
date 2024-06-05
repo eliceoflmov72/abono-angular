@@ -8,7 +8,7 @@ export interface ValidPeriod {
   end_date: string;
 }
 
-export interface Data {
+export interface Pass {
   id?: string;
   company: string;
   coordinates: Coordinate[];

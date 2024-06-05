@@ -3,8 +3,8 @@ import * as L from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Data } from '../../services/pass.model';
-import { CrudService } from '../../services/pass_crud.service';
+import { Pass } from '../../services/pass.model';
+import { PassCrudService } from '../../services/pass_crud.service';
 import { Refill } from '../../services/refill.model';
 import { RefillCrudService } from '../../services/refill_crud.service';
 
@@ -49,7 +49,7 @@ export class MapComponent implements AfterViewInit {
 
   constructor(
     private http: HttpClient,
-    private crudService: CrudService,
+    private crudService: PassCrudService,
     private refillCrudService: RefillCrudService,
   ) {}
 
@@ -80,8 +80,8 @@ export class MapComponent implements AfterViewInit {
   }
 
   private loadPassMarkers(): void {
-    this.crudService.getData().subscribe(
-      (data: Data[]) => {
+    this.crudService.getPass().subscribe(
+      (data: Pass[]) => {
         data.forEach((item) => {
           item.coordinates.forEach((coord) => {
             const lat = parseFloat(coord.latitude);
@@ -95,7 +95,7 @@ export class MapComponent implements AfterViewInit {
           });
         });
       },
-      (error) => {
+      (error: any) => {
         console.error('Error loading markers:', error);
       },
     );

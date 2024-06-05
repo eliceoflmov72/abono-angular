@@ -27,18 +27,38 @@
     <div class="collapse navbar-collapse" id="navbarsExample04">
       <ul class="navbar-nav me-0">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/map']">Mapa</a>
+          <a class="nav-link" [routerLink]="['/map']"> Mapa </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/datadisplay']">Información</a>
+          <a class="nav-link" [routerLink]="['/datadisplay']">Abonos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/listcomponent']">Listado</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/profile']">
-            &#64;{{ username }}
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false"
+          >
+            Editar
           </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/pass_list']"
+                >Editar abono</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/refill_list']"
+                >Registrar recarga</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/profile']"
+            >&#64;{{ username }}</a
+          >
         </li>
       </ul>
     </div>

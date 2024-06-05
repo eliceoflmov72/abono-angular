@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CrudService } from '../../services/pass_crud.service';
-import { Data } from '../../services/pass.model';
+import { PassCrudService } from '../../services/pass_crud.service';
+import { Pass } from '../../services/pass.model';
 
 @Component({
   selector: 'app-datadisplay',
@@ -8,13 +8,13 @@ import { Data } from '../../services/pass.model';
   styleUrls: ['./datadisplay.component.scss'],
 })
 export class DatadisplayComponent implements OnInit {
-  data: Data[] = [];
+  data: Pass[] = [];
 
-  constructor(private dataService: CrudService) {}
+  constructor(private dataService: PassCrudService) {}
 
   ngOnInit(): void {
-    this.dataService.getData().subscribe(
-      (data: Data[]) => {
+    this.dataService.getPass().subscribe(
+      (data: Pass[]) => {
         this.data = data;
       },
       (error) => {

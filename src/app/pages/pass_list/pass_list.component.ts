@@ -1,31 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-import { CrudService } from '../../services/pass_crud.service';
-import { Data } from '../../services/pass.model';
+import { PassCrudService } from '../../services/pass_crud.service';
+import { Pass } from '../../services/pass.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-listcomponent',
+  selector: 'app-pass-list',
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
-  templateUrl: './listcomponent.component.html',
-  styleUrls: ['./listcomponent.component.scss'],
+  templateUrl: './pass_list.component.html',
+  styleUrls: ['./pass_list.component.scss'],
 })
-export class ListcomponentComponent implements OnInit {
-  data: Data[] = [];
-  filteredData: Data[] = [];
+export class PassListComponent implements OnInit {
+  passes: Pass[] = [];
+  filteredData: Pass[] = [];
   searchTerm: string = '';
 
   constructor(
-    private crudService: CrudService,
+    private crudService: PassCrudService,
     private router: Router,
   ) {}
 
   ngOnInit(): void {
-    this.crudService.getData().subscribe(
-      (data: Data[]) => {
-        this.data = data;
+    this.crudService.getPass().subscribe(
+      (data: Pass[]) => {
+        this.passes = data;
         this.filteredData = data; // Inicialmente, los datos filtrados son todos los datos
       },
       (error) => {
@@ -34,19 +34,19 @@ export class ListcomponentComponent implements OnInit {
     );
   }
 
-  onSelect(item: Data): void {
-    this.router.navigate(['/detailcomponent', item.id]);
+  onSelect(item: Pass): void {
+    this.router.navigate(['/pass_detail', item.id]);
   }
 
   onCreateNew(): void {
-    this.router.navigate(['/detailcomponent', 'new']);
+    this.router.navigate(['/pass_detail', 'new']);
   }
 
   onSearch(): void {
     if (this.searchTerm.trim() === '') {
-      this.filteredData = this.data; // Si no hay término de búsqueda, muestra todos los datos
+      this.filteredData = this.passes; // Si no hay término de búsqueda, muestra todos los datos
     } else {
-      this.filteredData = this.data.filter((item) =>
+      this.filteredData = this.passes.filter((item) =>
         item.name.toLowerCase().includes(this.searchTerm.toLowerCase()),
       );
     }

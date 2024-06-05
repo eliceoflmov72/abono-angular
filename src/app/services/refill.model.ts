@@ -3,11 +3,6 @@ export interface Coordinate {
   longitude: string;
 }
 
-export interface ValidPeriod {
-  start_date: string;
-  end_date: string;
-}
-
 export interface Refill {
   id?: string;
   passId: string;
@@ -15,7 +10,6 @@ export interface Refill {
   coordinates: Coordinate[];
   name: string;
   description: string;
-  valid_period: ValidPeriod;
   image: string;
   type: string;
 }

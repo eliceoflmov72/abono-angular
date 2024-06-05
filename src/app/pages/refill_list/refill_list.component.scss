@@ -1,0 +1,123 @@
+:host {
+  display: block;
+  height: 100%;
+  min-height: 100vh;
+}
+
+li {
+  cursor: pointer;
+
+  &:hover {
+    background-color: #cecece;
+  }
+
+  &:active {
+    background-color: #e0e0e0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  height: 2em;
+  display: flex;
+  align-items: center;
+  padding: 0 1em;
+  justify-content: center;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 1em;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    overflow: hidden;
+  }
+}
+
+.btn1 {
+  display: block;
+}
+
+.btn2 {
+  display: none;
+}
+
+.panel-bar {
+  margin: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+
+  button {
+    font-size: clamp(0.8rem, 1.4vw, 1rem);
+    height: 56px;
+    width: 25%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  input {
+    height: 100%;
+    width: 70%;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .panel-bar {
+    margin: auto;
+    justify-content: space-around;
+  }
+
+  .btn1 {
+    display: none;
+  }
+
+  .btn2 {
+    display: block;
+  }
+
+  .btn2:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: black;
+  }
+
+  .btn2:active:focus {
+    background-color: var(--red-icon);
+    border-color: var(--red-icon);
+    color: var(--color-tertiary);
+    transition:
+      background-color 0.3s,
+      color 0.3s,
+      border-color 0.3s;
+  }
+}
