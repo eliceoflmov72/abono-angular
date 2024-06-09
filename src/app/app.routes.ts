@@ -1,20 +1,30 @@
 import { Routes } from '@angular/router';
+import { canActivate } from './auth/auth.guard';
+import { RoleGuard } from './auth/role.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { MapComponent } from './pages/map/map.component';
 import { DatadisplayComponent } from './pages/datadisplay/datadisplay.component';
+import { DatadisplayDetailComponent } from './pages/datadisplay_detail/datadisplay_detail.component';
 import { PassListComponent } from './pages/pass_list/pass_list.component';
 import { PassDetailComponent } from './pages/pass_detail/pass_detail.component';
 import { RefillListComponent } from './pages/refill_list/refill_list.component';
 import { RefillDetailComponent } from './pages/refill_detail/refill_detail.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
-import { canActivate } from './auth/auth.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { ContactFormComponent } from './pages/contact-form/contact-form.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     title: 'Inicio',
+    canActivate: [canActivate],
+  },
+  {
+    path: 'contact-form',
+    component: ContactFormComponent,
+    title: 'Contactar',
     canActivate: [canActivate],
   },
   {
@@ -30,27 +40,43 @@ export const routes: Routes = [
     canActivate: [canActivate],
   },
   {
+    path: 'datadisplay/:id',
+    component: DatadisplayDetailComponent,
+    title: 'Información detallada',
+    canActivate: [canActivate],
+  },
+  {
     path: 'pass_list',
     component: PassListComponent,
     title: 'Listado',
-    canActivate: [canActivate],
+    canActivate: [canActivate, RoleGuard],
+    data: { tipo: ['admin'] },
   },
   {
     path: 'pass_detail/:id',
     component: PassDetailComponent,
-    title: 'Información Detallada',
-    canActivate: [canActivate],
+    title: 'Información detallada',
+    canActivate: [canActivate, RoleGuard],
+    data: { tipo: ['admin'] },
   },
   {
     path: 'refill_list',
     component: RefillListComponent,
     title: 'Listado',
-    canActivate: [canActivate],
+    canActivate: [canActivate, RoleGuard],
+    data: { tipo: ['admin'] },
   },
   {
     path: 'refill_detail/:id',
     component: RefillDetailComponent,
-    title: 'Información Detallada',
+    title: 'Información detallada',
+    canActivate: [canActivate, RoleGuard],
+    data: { tipo: ['admin'] },
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    title: 'Perfil',
     canActivate: [canActivate],
   },
   { path: 'auth/register', component: RegisterComponent, title: 'Registro' },

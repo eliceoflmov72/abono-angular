@@ -8,6 +8,7 @@ import { tap, switchMap } from 'rxjs/operators';
 })
 export class AuthService {
   private apiUrl = 'http://localhost:3000/api/users';
+  private historyUrl = 'http://localhost:3000/api/user-history';
 
   constructor(private http: HttpClient) {}
 
@@ -27,9 +28,13 @@ export class AuthService {
       switchMap((response) => {
         return this.getUserById(response.user.id).pipe(
           tap((user) => {
-            if (user && user.username) {
+            if (user) {
               localStorage.setItem('username', user.username);
+              localStorage.setItem('tipo', user.tipo); // Almacenar el tipo del usuario
+              localStorage.setItem('createdAt', user.createdAt); // Almacenar la fecha de creación del usuario
               console.log('Username stored:', user.username);
+              console.log('Tipo stored:', user.tipo);
+              console.log('CreatedAt stored:', user.createdAt);
             }
           }),
         );
@@ -41,6 +46,8 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('username');
+    localStorage.removeItem('tipo');
+    localStorage.removeItem('createdAt');
   }
 
   isLoggedIn(): Observable<boolean> {
@@ -56,7 +63,23 @@ export class AuthService {
     return localStorage.getItem('username');
   }
 
+  getUserId(): string | null {
+    return localStorage.getItem('userId');
+  }
+
+  getTipo(): string | null {
+    return localStorage.getItem('tipo');
+  }
+
+  getCreatedAt(): string | null {
+    return localStorage.getItem('createdAt');
+  }
+
   getUserById(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  getUserHistory(userId: string): Observable<any> {
+    return this.http.get<any>(`${this.historyUrl}/${userId}`);
   }
 }

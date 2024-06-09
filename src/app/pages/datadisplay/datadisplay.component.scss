@@ -1,21 +1,69 @@
-.card {
-  width: 400px;
+:host {
+  display: block;
+  min-height: 50vh;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 1em;
+  justify-content: center;
+  align-items: start;
   padding: 1em;
+  width: 100%;
+  height: auto;
+  padding-bottom: 4rem;
+}
+
+div.cards.mt-6 {
+  justify-items: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 450px;
+  padding: 1.5em;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 1em;
   background-color: #fff;
-  overflow: scroll;
-  height: 500px;
+  min-height: 100%;
   transition:
     box-shadow 0.3s,
     transform 0.3s;
+  margin: 1em;
+  font-size: clamp(1rem, 1.4vw, 1rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.noData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+
+  p {
+    margin: auto;
+    font-size: clamp(1rem, 1.4vw, 1rem);
+    font-weight: bold;
+    color: #ccc;
+    text-align: center;
+    padding-top: 3rem;
+  }
+  & > * {
+    max-width: 500px;
+    width: 100%;
+    padding-bottom: 4rem;
+  }
 }
 
 .card:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  transform: scale(1.05);
+  transform: scale(1.01);
   cursor: pointer;
 }
 
@@ -25,12 +73,13 @@
   border-radius: 5px;
 }
 
-.card h2 {
-  font-size: 1.5rem;
-}
-
-.card h3 {
-  font-size: 1.2rem;
+.mt-2 p:first-child {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin-bottom: -3rem;
 }
 
 .card ul {
@@ -39,9 +88,24 @@
   padding: 0;
 }
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+input {
+  position: relative;
+  cursor: text;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  input {
+    width: 65%;
+  }
 }

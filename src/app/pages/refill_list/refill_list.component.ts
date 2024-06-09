@@ -38,11 +38,11 @@ export class RefillListComponent implements OnInit {
     this.router.navigate(['/refill_detail', item.id]);
   }
 
-  onCreateNew(): void {
+  createRefill(): void {
     this.router.navigate(['/refill_detail', 'new']);
   }
 
-  onSearch(): void {
+  searchRefills(): void {
     if (this.searchTerm.trim() === '') {
       this.filteredData = this.refills; // Si no hay término de búsqueda, muestra todos los datos
     } else {

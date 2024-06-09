@@ -1,34 +1,32 @@
-@if (data.length > 0) {
-  <div class="cards mt-6 mb-6">
-    @for (item of data; track item) {
-      <div class="card">
-        <h2>{{ item.name }}</h2>
-        <p>{{ item.description }}</p>
-        <p><strong>Compañía:</strong><br />{{ item.company }}</p>
-        <p><strong>Tipo:</strong><br />{{ item.type }}</p>
-        <p><strong>Price:</strong><br />{{ item.price }}</p>
-        <img [src]="item.image" alt="{{ item.name }}" width="200" />
-        <div>
-          <h3>Coordinates:</h3>
-          <ul>
-            @for (coord of item.coordinates; track coord) {
-              <li>
-                Latitude: {{ coord.latitude }}, Longitude: {{ coord.longitude }}
-              </li>
-            }
-          </ul>
-        </div>
-        <div>
-          <h3>Valid Period:</h3>
-          <p>Start Date: {{ item.valid_period.start_date }}</p>
-          <p>End Date: {{ item.valid_period.end_date }}</p>
-        </div>
-      </div>
-    }
+<div class="search-bar">
+  <input
+    placeholder="Buscar abono por nombre"
+    [(ngModel)]="searchWord"
+    (input)="searchPass()"
+  />
+</div>
+<div *ngIf="filteredData.length > 0" class="mt-2">
+  <p>{{ filteredData.length }} resultados encontrados</p>
+  <div class="cards mt-6">
+    <div
+      class="card"
+      *ngFor="let data of filteredData"
+      (click)="onSelect(data)"
+      style="cursor: pointer"
+    >
+      <h2>{{ data.name }}</h2>
+      <p>{{ data.description }}</p>
+      <img
+        *ngIf="data.image"
+        src="../../../assets/passes/{{ data.image }}"
+        alt="{{ data.name }}"
+        width="400vw"
+        class="mb-0 mt-0 align-self-center"
+      />
+    </div>
   </div>
-}
-@if (data.length === 0) {
-  <div class="charging">
-    <p>Cargando datos...</p>
-  </div>
-}
+</div>
+<div *ngIf="filteredData.length === 0" class="noData">
+  <p>No hay datos disponibles.</p>
+  <img src="../../../assets/guy_thinking.png" alt="No hay datos disponibles" />
+</div>

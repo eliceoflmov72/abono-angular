@@ -1,0 +1,83 @@
+<div *ngIf="data; else loading" class="container">
+  <button
+    [routerLink]="['/datadisplay']"
+    class="btn btn-secondary mb-6"
+    style="background-color: transparent; border: none"
+  >
+    <i
+      class="bi bi-arrow-left-circle-fill"
+      style="color: #99b8b2; font-size: 2rem"
+    ></i>
+  </button>
+
+  <div class="content">
+    <h2>{{ data.name }}.</h2>
+    <p>{{ data.description }}</p>
+    <img
+      *ngIf="data.image"
+      src="../../../assets/passes/{{ data.image }}"
+      alt="{{ data.name }}"
+      width="400vw"
+      class="mb-3 align-self-center"
+    />
+    <p><strong>Compañía:</strong> {{ data.company }}</p>
+    <p><strong>Tipo:</strong> {{ data.type }}</p>
+    <p><strong>Precio:</strong> {{ data.price }}</p>
+    <div>
+      <h4>Coordenadas.</h4>
+      <ul>
+        <li *ngFor="let coord of data.coordinates">
+          Latitud: {{ coord.latitude }}, Longitud: {{ coord.longitude }}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h4>Periodo de validez:</h4>
+      <p>
+        <strong>Inicio.</strong><br />{{
+          data.valid_period.start_date | date: "longDate"
+        }}
+      </p>
+      <p>
+        <strong>Finalización.</strong><br />{{
+          data.valid_period.end_date | date: "longDate"
+        }}
+      </p>
+    </div>
+
+    <div>
+      <h4>Lugares de recarga:</h4>
+      <div *ngIf="refills.length > 0; else noRefills">
+        <ul>
+          <li *ngFor="let refill of refills">
+            <p><strong>Nombre:</strong> {{ refill.name }}</p>
+            <p><strong>Descripción:</strong> {{ refill.description }}</p>
+            <p><strong>Compañía:</strong> {{ refill.company }}</p>
+            <p><strong>Tipo:</strong> {{ refill.type }}</p>
+            <p><strong>Coordenadas:</strong></p>
+            <ul>
+              <li *ngFor="let coord of refill.coordinates">
+                Latitud: {{ coord.latitude }}, Longitud: {{ coord.longitude }}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <ng-template #noRefills>
+        <p class="mb-6">
+          No existen lugares de recarga asociados a este abono.
+        </p>
+      </ng-template>
+    </div>
+
+    <!-- Botón para alternar los favoritos -->
+    <button (click)="setFavorite()">
+      {{ isPassDataFavorite ? "Eliminar de favoritos" : "Añadir a favoritos" }}
+    </button>
+  </div>
+</div>
+<ng-template #loading>
+  <div>
+    <p>Cargando datos...</p>
+  </div>
+</ng-template>

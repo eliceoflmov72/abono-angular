@@ -1,7 +1,7 @@
 <div class="panel-bar mt-6">
-  <button (click)="onCreateNew()" class="btn1 btn-primary">Crear abono</button>
+  <button (click)="createNew()" class="btn1 btn-primary">Crear abono</button>
   <button
-    (click)="onCreateNew()"
+    (click)="createNew()"
     class="btn2 btn-primary"
     style="font-size: 1.3em; padding: 0"
   >
@@ -10,7 +10,7 @@
   <input
     placeholder="Nombre del abono"
     [(ngModel)]="searchTerm"
-    (input)="onSearch()"
+    (input)="searchPass()"
   />
 </div>
 <div *ngIf="filteredData.length > 0" class="mt-4">

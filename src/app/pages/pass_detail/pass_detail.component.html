@@ -1,6 +1,11 @@
+<div class="card justify-content-center">
+  <p-toast></p-toast>
+  <p-confirmDialog></p-confirmDialog>
+</div>
+
 <div *ngIf="data; else loading" class="container">
   <button
-    (click)="onBack()"
+    [routerLink]="['/pass_list']"
     class="btn btn-secondary mb-6"
     style="background-color: transparent; border: none"
   >
@@ -9,7 +14,7 @@
       style="color: #99b8b2; font-size: 2rem"
     ></i>
   </button>
-  <h1 class="mb-6">Detalles de {{ data.name }}</h1>
+  <h2 class="mb-6">Detalles de {{ data.name }}</h2>
   <div class="form-item">
     <label>Compañía:</label>
     <input [(ngModel)]="data.company" />
@@ -17,6 +22,10 @@
   <div class="form-item">
     <label>Nombre:</label>
     <input [(ngModel)]="data.name" />
+  </div>
+  <div class="form-item">
+    <label>PassID:</label>
+    <p>{{ data.id }}</p>
   </div>
   <div class="form-item">
     <label>Descripción:</label>
@@ -55,13 +64,26 @@
         <input [(ngModel)]="coordinate.latitude" />
         <label>Longitud:</label>
         <input [(ngModel)]="coordinate.longitude" />
+        <button
+          class="delete-coordinate"
+          (click)="confirmDeleteCoor($event, i)"
+        >
+          Eliminar
+        </button>
       </div>
     </div>
+    <button class="add-coordinate" (click)="addCoor()">
+      Añadir coordenada
+    </button>
   </div>
   <hr class="my-4" style="border: 1px solid black; width: 100%" />
   <div class="buttons-actions">
-    <button (click)="onSave()">{{ isNew ? "Crear" : "Actualizar" }}</button>
-    <button *ngIf="!isNew" (click)="onDelete()">Eliminar</button>
+    <button (click)="savePass()">
+      {{ isPassNew ? "Crear" : "Actualizar" }}
+    </button>
+    <button *ngIf="!isPassNew" (click)="confirmDeletePass($event)">
+      Eliminar
+    </button>
   </div>
 </div>
 <ng-template #loading>

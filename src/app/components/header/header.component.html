@@ -1,21 +1,19 @@
-<nav
-  class="navbar navbar-expand-md navbar-light bg-light"
-  aria-label="Fourth navbar example"
->
+<nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"
-      ><img
+    <a class="navbar-brand" href="#">
+      <img
         src="../../../assets/AbonoLogoUpscale.png"
         alt="Logo"
         width="175px"
         [style]="{ 'margin-right': '3vw' }"
-    /></a>
+      />
+    </a>
     <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
-      data-bs-target="#navbarsExample04"
-      aria-controls="navbarsExample04"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
@@ -24,15 +22,25 @@
       <div></div>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExample04">
+    <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav me-0">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/map']"> Mapa </a>
+          <a
+            class="nav-link"
+            [routerLink]="['/map']"
+            routerLinkActive="active-link"
+            >Mapa</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/datadisplay']">Abonos</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/datadisplay']"
+            routerLinkActive="active-link"
+            >Abonos</a
+          >
         </li>
-        <li class="nav-item dropdown">
+        <li *ngIf="isUserAdmin" class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             data-bs-toggle="dropdown"
@@ -42,7 +50,7 @@
           >
             Editar
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu text-center">
             <li>
               <a class="dropdown-item" [routerLink]="['/pass_list']"
                 >Editar abono</a
@@ -56,7 +64,10 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/profile']"
+          <a
+            class="nav-link"
+            [routerLink]="['/profile']"
+            routerLinkActive="active-link"
             >&#64;{{ username }}</a
           >
         </li>

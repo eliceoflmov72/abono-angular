@@ -1,13 +1,13 @@
+import { AuthService } from '../../services/auth.service';
+import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { Router, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-register',
@@ -39,7 +39,7 @@ export class RegisterComponent {
     return this.registerForm.controls;
   }
 
-  onSubmit() {
+  submitForm() {
     this.submitted = true;
 
     if (this.registerForm.invalid) {

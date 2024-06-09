@@ -26,7 +26,7 @@ export class PassListComponent implements OnInit {
     this.crudService.getPass().subscribe(
       (data: Pass[]) => {
         this.passes = data;
-        this.filteredData = data; // Inicialmente, los datos filtrados son todos los datos
+        this.filteredData = data;
       },
       (error) => {
         console.error('Error al obtener los datos:', error);
@@ -38,11 +38,11 @@ export class PassListComponent implements OnInit {
     this.router.navigate(['/pass_detail', item.id]);
   }
 
-  onCreateNew(): void {
+  createNew(): void {
     this.router.navigate(['/pass_detail', 'new']);
   }
 
-  onSearch(): void {
+  searchPass(): void {
     if (this.searchTerm.trim() === '') {
       this.filteredData = this.passes; // Si no hay término de búsqueda, muestra todos los datos
     } else {

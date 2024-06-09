@@ -1,27 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
-import { PanelModule } from 'primeng/panel';
-import { AvatarModule } from 'primeng/avatar';
-import { ButtonModule } from 'primeng/button';
-import { MenubarModule } from 'primeng/menubar';
-import { MenuModule } from 'primeng/menu';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [PanelModule, AvatarModule, ButtonModule, MenubarModule, MenuModule],
+  imports: [RouterLink],
   standalone: true,
 })
-export class HomeComponent implements OnInit {
-  items: { label?: string; icon?: string; separator?: boolean }[] = [];
-
-  ngOnInit() {
-    this.items = [
-      { label: 'Refresh', icon: 'pi pi-refresh' },
-      { label: 'Search', icon: 'pi pi-search' },
-      { separator: true },
-      { label: 'Delete', icon: 'pi pi-times' },
-    ];
-  }
-}
+export class HomeComponent {}

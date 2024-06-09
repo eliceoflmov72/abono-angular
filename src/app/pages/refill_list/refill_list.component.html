@@ -1,9 +1,9 @@
 <div class="panel-bar mt-6">
-  <button (click)="onCreateNew()" class="btn1 btn-primary">
+  <button (click)="createRefill()" class="btn1 btn-primary">
     Crear recarga
   </button>
   <button
-    (click)="onCreateNew()"
+    (click)="createRefill()"
     class="btn2 btn-primary"
     style="font-size: 1.3em; padding: 0"
   >
@@ -12,7 +12,7 @@
   <input
     placeholder="Punto de recarga"
     [(ngModel)]="searchTerm"
-    (input)="onSearch()"
+    (input)="searchRefills()"
   />
 </div>
 

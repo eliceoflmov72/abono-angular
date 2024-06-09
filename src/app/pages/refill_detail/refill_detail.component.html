@@ -1,6 +1,11 @@
+<div class="card justify-content-center">
+  <p-toast></p-toast>
+  <p-confirmDialog></p-confirmDialog>
+</div>
+
 <div *ngIf="data; else loading" class="container">
   <button
-    (click)="onBack()"
+    [routerLink]="['/refill_list']"
     class="btn btn-secondary mb-6"
     style="background-color: transparent; border: none"
   >
@@ -9,7 +14,7 @@
       style="color: #99b8b2; font-size: 2rem"
     ></i>
   </button>
-  <h1 class="mb-6">Detalles de {{ data.name }}</h1>
+  <h2 class="mb-6">Detalles de {{ data.name }}</h2>
   <div class="form-item">
     <label>Compañía:</label>
     <input [(ngModel)]="data.company" />
@@ -23,10 +28,6 @@
     <textarea [(ngModel)]="data.description"></textarea>
   </div>
   <div class="form-item">
-    <label>Imagen URL:</label>
-    <input [(ngModel)]="data.image" />
-  </div>
-  <div class="form-item">
     <label>Tipo:</label>
     <input [(ngModel)]="data.type" />
   </div>
@@ -36,6 +37,9 @@
   </div>
   <div class="form-item mb-6">
     <label class="mb-4" style="font-style: italic">Coordenadas</label>
+    <button class="add-coordinate" (click)="addCoor()">
+      Añadir coordenada
+    </button>
     <div *ngFor="let coordinate of data.coordinates; let i = index">
       <hr class="my-4" style="border: 1px solid black; width: 100%" />
       <div>
@@ -44,13 +48,23 @@
         <input [(ngModel)]="coordinate.latitude" />
         <label>Longitud:</label>
         <input [(ngModel)]="coordinate.longitude" />
+        <button
+          class="delete-coordinate"
+          (click)="confirmDeleteCoor($event, i)"
+        >
+          Eliminar
+        </button>
       </div>
     </div>
   </div>
   <hr class="my-4" style="border: 1px solid black; width: 100%" />
   <div class="buttons-actions">
-    <button (click)="onSave()">{{ isNew ? "Crear" : "Actualizar" }}</button>
-    <button *ngIf="!isNew" (click)="onDelete()">Eliminar</button>
+    <button (click)="saveThisRefill()">
+      {{ isNew ? "Crear" : "Actualizar" }}
+    </button>
+    <button *ngIf="!isNew" (click)="confirmDeleteRefill($event)">
+      Eliminar
+    </button>
   </div>
 </div>
 <ng-template #loading>
