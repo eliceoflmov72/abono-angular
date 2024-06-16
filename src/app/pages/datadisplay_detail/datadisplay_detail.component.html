@@ -16,7 +16,7 @@
     <img
       *ngIf="data.image"
       src="../../../assets/passes/{{ data.image }}"
-      alt="{{ data.name }}"
+      alt="{{ data.name }} imagen"
       width="400vw"
       class="mb-3 align-self-center"
     />
@@ -46,18 +46,19 @@
     </div>
 
     <div>
-      <h4>Lugares de recarga:</h4>
+      <h4 class="mt-4">Lugares de recarga:</h4>
       <div *ngIf="refills.length > 0; else noRefills">
         <ul>
           <li *ngFor="let refill of refills">
-            <p><strong>Nombre:</strong> {{ refill.name }}</p>
-            <p><strong>Descripción:</strong> {{ refill.description }}</p>
+            <hr class="featurette-divider" />
+            <h3>{{ refill.name }}</h3>
+            <p><strong>Descripción.<br></strong> {{ refill.description }}</p>
             <p><strong>Compañía:</strong> {{ refill.company }}</p>
             <p><strong>Tipo:</strong> {{ refill.type }}</p>
             <p><strong>Coordenadas:</strong></p>
             <ul>
               <li *ngFor="let coord of refill.coordinates">
-                Latitud: {{ coord.latitude }}, Longitud: {{ coord.longitude }}
+                <strong>Punto número {{ refill.coordinates.indexOf(coord) + 1 }}</strong>.<br>Latitud: {{ coord.latitude }} - Longitud: {{ coord.longitude }}
               </li>
             </ul>
           </li>
@@ -71,7 +72,7 @@
     </div>
 
     <!-- Botón para alternar los favoritos -->
-    <button (click)="setFavorite()">
+    <button (click)="setFavorite()" class="favoriteButton">
       {{ isPassDataFavorite ? "Eliminar de favoritos" : "Añadir a favoritos" }}
     </button>
   </div>

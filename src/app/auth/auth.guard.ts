@@ -8,7 +8,7 @@ import {
 } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Observable, of } from 'rxjs';
-import { map, catchError, switchMap } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 export const canActivate: CanActivateFn = (
   route: ActivatedRouteSnapshot,

@@ -158,9 +158,9 @@ export class MapComponent implements AfterViewInit {
         if (passMarkers[key] && refillMarkers[key]) {
           id = passMarkers[key].id ?? '';
           popupContent = `
-            <strong>${passMarkers[key].name} & ${refillMarkers[key].name}</strong><br><br>
-            ${passMarkers[key].description}<br><br>
-            <strong>Información del lugar de recarga.</strong><br><br>${refillMarkers[key].description}<br><br>
+            <strong>${passMarkers[key].name} & ${refillMarkers[key].name}</strong><br>
+            ${passMarkers[key].description}<br><br><br>
+            <strong>Información del lugar de recarga.</strong><br><br>${refillMarkers[key].description}<br>
             <strong>Precio:</strong> ${passMarkers[key].price}€<br>
             <button 
               style="${buttonStyle}" 
@@ -267,27 +267,6 @@ export class MapComponent implements AfterViewInit {
     if (this.currentMarker) {
       this.map?.removeLayer(this.currentMarker);
       this.currentMarker = undefined;
-    }
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent): void {
-    const target = event.target as HTMLElement;
-    const searchBox = document.querySelector('.search-box');
-    const mapFrame = document.querySelector('.map-frame');
-
-    // Verificar si el click está fuera de la caja de búsqueda y el map frame
-    if (
-      searchBox &&
-      !searchBox.contains(target) &&
-      mapFrame &&
-      !mapFrame.contains(target)
-    ) {
-      this.searchResults = [];
-      if (this.currentMarker) {
-        this.map?.removeLayer(this.currentMarker);
-        this.currentMarker = undefined;
-      }
     }
   }
 

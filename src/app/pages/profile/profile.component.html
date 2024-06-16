@@ -1,16 +1,29 @@
 <div class="container">
-  <h1>Bienvenido {{ name }}.</h1>
+  <h1 style="padding-top: 4rem; padding-bottom: 1rem">Bienvenido {{ name }}.</h1>
 
   <p>Eres usuario desde: {{ createdAt | date: "longDate" }}.</p>
 
-  <h2 class="mt-6">Pases Favoritos</h2>
+  <h2 class="mt-6" style="padding-bottom: 2rem;">Pases Favoritos.</h2>
   <div *ngIf="favoritePasses.length > 0; else noFavorites" class="row">
     <div *ngFor="let pass of favoritePasses" class="col-md-4 mb-4">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">{{ pass.name }}</h5>
+          <img
+            *ngIf="pass.image"
+            src="../../../assets/passes/{{ pass.image }}"
+            alt="{{ pass.name }}"
+            width="400vw"
+            class="mb-3 align-self-center"
+          />
           <p class="card-text">{{ pass.description }}</p>
-          <p class="card-text"><strong>Precio:</strong> {{ pass.price }}</p>
+          <button
+            class="btn btn-primary"
+            (click)="onSelectPass(pass.id)"
+            style="width: 100%"
+          >
+            Ver Pase
+          </button>
         </div>
       </div>
     </div>

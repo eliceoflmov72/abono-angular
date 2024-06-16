@@ -28,11 +28,39 @@ ul {
   justify-content: center;
   height: 100%;
   margin: auto;
+  padding-bottom: 3rem;
 }
 
 .container button {
   justify-self: center;
 }
+
+.favoriteButton {
+  background-color: #C32928 !important;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 40%;
+  font-size: clamp(0.9rem, 1.7vw, 1.2rem);
+  &:hover {
+    background-color: var(--primary-color-dark);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    background-color: var(--primary-color-light);
+    transform: scale(0.95);
+  }
+}
+
 
 @media screen and (max-width: 768px) {
   .container {
@@ -43,7 +71,7 @@ ul {
   }
 
   .content {
-    font-size: clamp(0.7rem, 1.7vw, 1.2rem);
+    font-size: clamp(0.9rem, 1.7vw, 1.2rem);
     line-height: 2;
   }
 }

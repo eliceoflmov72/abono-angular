@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { PassCrudService } from '../../services/pass_crud.service';
 import { AuthService } from '../../services/auth.service';
 import { UserHistoryService } from '../../services/user_history.service';
@@ -17,12 +18,13 @@ export class ProfileComponent implements OnInit {
   name: string | null = '';
   createdAt: string | null = '';
   favoritePasses: Pass[] = [];
-  comments: any[] = []; // Asegúrate de definir comments
+  comments: any[] = [];
 
   constructor(
     private authService: AuthService,
     private userHistoryService: UserHistoryService,
     private passCrudService: PassCrudService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -37,14 +39,24 @@ export class ProfileComponent implements OnInit {
 
       this.userHistoryService.getUserHistory(userId).subscribe((history) => {
         const passIds = history.passIds;
-        this.comments = history.comments; // Almacena los comentarios
+        this.comments = history.comments;
 
-        passIds.forEach((passId) => {
-          this.passCrudService.getPassById(passId).subscribe((pass) => {
-            this.favoritePasses.push(pass);
-          });
+        passIds.forEach((passId: string) => {
+          if (passId) {
+            this.passCrudService.getPassById(passId).subscribe((pass) => {
+              this.favoritePasses.push(pass);
+            });
+          }
         });
       });
+    }
+  }
+
+  public onSelectPass(passId: string | undefined): void {
+    if (passId) {
+      this.router.navigate(['/datadisplay', passId]);
+    } else {
+      console.error('Pass id inválido');
     }
   }
 }
