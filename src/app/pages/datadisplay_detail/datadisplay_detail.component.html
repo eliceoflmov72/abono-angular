@@ -75,6 +75,19 @@
     <button (click)="setFavorite()" class="favoriteButton">
       {{ isPassDataFavorite ? "Eliminar de favoritos" : "Añadir a favoritos" }}
     </button>
+
+    <!-- Sección de comentarios -->
+    <div class="comments-section mt-5">
+      <h4>Comentarios:</h4>
+      <div *ngFor="let comment of comments" class="comment">
+        <div>{{ getRandomIcon() }}</div>
+        <p>{{ comment.comment }}</p>
+      </div>
+      <div class="add-comment mt-3">
+        <textarea [(ngModel)]="newComment" rows="3" class="form-control" placeholder="Añadir un comentario"></textarea>
+        <button (click)="addComment()" class="btn btn-primary mt-2">Añadir Comentario</button>
+      </div>
+    </div>
   </div>
 </div>
 <ng-template #loading>

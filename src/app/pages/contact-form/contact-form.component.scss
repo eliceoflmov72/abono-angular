@@ -5,9 +5,28 @@
 
 @media screen and (min-width: 768px) {
   div {
-    width: 50%;
+    width: 70%;
+    max-width: 700px;
     margin: auto;
   }
+}
+
+.w-full {
+
+  display: flex;
+  p {
+    text-align: center;
+  }
+
+  div {
+    width: 100%;
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-around;
+    gap: 1em;
+    align-items: center
+  }
+
 }
 
 div div,
@@ -33,6 +52,7 @@ div div div {
 input,
 textarea {
   width: 100%;
+  border: 1px solid #ccc;
 }
 
 @media screen and (max-width: 768px) {

@@ -1,7 +1,9 @@
 <div class="container">
-  <h1 style="padding-top: 4rem; padding-bottom: 1rem">Bienvenido {{ name }}.</h1>
+  <h1 style="padding-top: 4rem; padding-bottom: 1rem">
+    Bienvenido {{ name }}  😊
+  </h1>
 
-  <p>Eres usuario desde: {{ createdAt | date: "longDate" }}.</p>
+  <p>Eres usuario desde {{ createdAt | date: "longDate" }}.</p>
 
   <h2 class="mt-6" style="padding-bottom: 2rem;">Pases Favoritos.</h2>
   <div *ngIf="favoritePasses.length > 0; else noFavorites" class="row">
@@ -13,10 +15,10 @@
             *ngIf="pass.image"
             src="../../../assets/passes/{{ pass.image }}"
             alt="{{ pass.name }}"
-            width="400vw"
+            width="100%"
             class="mb-3 align-self-center"
           />
-          <p class="card-text">{{ pass.description }}</p>
+          
           <button
             class="btn btn-primary"
             (click)="onSelectPass(pass.id)"

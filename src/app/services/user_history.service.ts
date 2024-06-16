@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserHistory } from './user_history.model';
+import { UserHistory, Comment } from '../models/user_history.model';
 
 @Injectable({
   providedIn: 'root',
@@ -43,11 +43,7 @@ export class UserHistoryService {
     );
   }
 
-  removeCommentFromHistory(userId: string, passId: string): Observable<void> {
-    return this.http.post<void>(
-      `${this.apiUrl}/comment/remove`,
-      { userId, passId },
-      { responseType: 'text' as 'json' },
-    );
+  getAllCommentsForPass(passId: string): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.apiUrl}/comments/${passId}`);
   }
 }

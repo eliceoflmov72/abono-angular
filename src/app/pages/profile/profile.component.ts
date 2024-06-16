@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { PassCrudService } from '../../services/pass_crud.service';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../auth/auth.service';
 import { UserHistoryService } from '../../services/user_history.service';
-import { Pass } from '../../services/pass.model';
+import { Pass } from '../../models/pass.model';
 
 @Component({
   selector: 'app-profile',

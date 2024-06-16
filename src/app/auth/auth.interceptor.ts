@@ -4,16 +4,21 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { Observable, throwError } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  private isRefreshing = false;
+
   constructor(private authService: AuthService) {}
+
   intercept(
     request: HttpRequest<any>,
-    next: HttpHandler,
+    next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const token = this.authService.getToken();
     if (token) {
@@ -23,6 +28,30 @@ export class AuthInterceptor implements HttpInterceptor {
         },
       });
     }
-    return next.handle(request);
+
+    return next.handle(request).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401 && !this.isRefreshing) {
+          this.isRefreshing = true;
+          return this.authService.refreshToken().pipe(
+            switchMap((tokenResponse) => {
+              this.isRefreshing = false;
+              request = request.clone({
+                setHeaders: {
+                  Authorization: `Bearer ${tokenResponse.token}`,
+                },
+              });
+              return next.handle(request);
+            }),
+            catchError((err) => {
+              this.isRefreshing = false;
+              this.authService.logout();
+              return throwError(err);
+            })
+          );
+        }
+        return throwError(error);
+      })
+    );
   }
 }

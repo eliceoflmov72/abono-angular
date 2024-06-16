@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { PassCrudService } from '../../services/pass_crud.service';
-import { Pass } from '../../services/pass.model';
+import { Pass } from '../../models/pass.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

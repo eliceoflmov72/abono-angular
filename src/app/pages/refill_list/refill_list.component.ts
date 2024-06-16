@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { RefillCrudService } from '../../services/refill_crud.service';
-import { Refill } from '../../services/refill.model';
+import { Refill } from '../../models/refill.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

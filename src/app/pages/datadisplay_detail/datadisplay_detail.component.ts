@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PassCrudService } from '../../services/pass_crud.service';
 import { RefillCrudService } from '../../services/refill_crud.service';
-import { Pass } from '../../services/pass.model';
-import { Refill } from '../../services/refill.model';
+import { Pass } from '../../models/pass.model';
+import { Refill } from '../../models/refill.model';
 import { UserHistoryService } from '../../services/user_history.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import { Comment } from '../../models/user_history.model';
 
 @Component({
   selector: 'app-datadisplay-detail',
@@ -22,6 +23,22 @@ export class DatadisplayDetailComponent implements OnInit {
   refills: Refill[] = [];
   userId: string | null = null;
   isPassDataFavorite: boolean = false;
+  comments: Comment[] = [];
+  newComment: string = '';
+  icons: string[] = [
+    '😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😆', '😉', '😊',
+    '😋', '😎', '😍', '😘', '🥰', '😗', '😙', '😚', '🙂',
+    '🤗', '🤩', '🤔', '🤨', '😐', '😑', '😶', '🙄', '😏', '😣',
+    '😥', '😮', '🤐', '😯', '😪', '😫', '🥱', '😴', '😌', '😛',
+    '😜', '😝', '🤤', '😒', '😓', '😔', '😕', '🙃', '🤑', '😲',
+    '☹️', '🙁', '😖', '😞', '😟', '😤', '😢', '😭', '😦', '😧',
+    '😨', '😩', '🤯', '😬', '😰', '😱', '🥵', '🥶', '😳', '🤪',
+    '😵', '😠', '😷', '🤒', '🤕', '🤢', '🤮', '🤧',
+    '😇', '🥳', '🥴', '🥺', '🤠', '🤡', '🤥', '🤫', '🤭', '🧐',
+    '🤓', '😈', '👿', '👹', '👺', '💀', '👻', '👽', '👾', '🤖',
+    '😺', '😸', '😹', '😻', '😼', '😽', '🙀', '😿', '😾'
+  ];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +47,7 @@ export class DatadisplayDetailComponent implements OnInit {
     private userHistoryService: UserHistoryService,
     private router: Router,
     private cdr: ChangeDetectorRef,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.userId = localStorage.getItem('userId');
@@ -42,6 +59,7 @@ export class DatadisplayDetailComponent implements OnInit {
           if (data.id) {
             this.loadAllRefills(data.id);
             this.checkFavorite(data.id);
+            this.loadComments(data.id);
           }
         },
         (error) => {
@@ -100,5 +118,36 @@ export class DatadisplayDetailComponent implements OnInit {
         );
       }
     }
+  }
+
+  loadComments(passId: string): void {
+    this.userHistoryService.getAllCommentsForPass(passId).subscribe(
+      (comments: Comment[]) => {
+        this.comments = comments;
+      },
+      (error) => {
+        console.error('Error al obtener los comentarios:', error);
+      }
+    );
+  }
+
+  addComment(): void {
+    if (this.userId && this.data && this.newComment.trim()) {
+      const comment = this.newComment.trim();
+      this.userHistoryService.addCommentToHistory(this.userId, this.data.id!, comment).subscribe(
+        () => {
+          this.loadComments(this.data!.id!);
+          this.newComment = '';
+        },
+        (error) => {
+          console.error('Error al añadir el comentario:', error);
+        }
+      );
+    }
+  }
+
+  getRandomIcon(): string {
+    const randomIndex = Math.floor(Math.random() * this.icons.length);
+    return this.icons[randomIndex];
   }
 }

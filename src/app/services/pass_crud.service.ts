@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Pass } from './pass.model';
+import { Pass } from '../models/pass.model';
 
 @Injectable({
   providedIn: 'root',

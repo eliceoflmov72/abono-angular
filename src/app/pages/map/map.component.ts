@@ -3,9 +3,9 @@ import * as L from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Pass } from '../../services/pass.model';
+import { Pass } from '../../models/pass.model';
 import { PassCrudService } from '../../services/pass_crud.service';
-import { Refill } from '../../services/refill.model';
+import { Refill } from '../../models/refill.model';
 import { RefillCrudService } from '../../services/refill_crud.service';
 import { Router } from '@angular/router';
 
