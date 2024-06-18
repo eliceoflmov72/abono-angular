@@ -9,13 +9,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { Comment } from '../../models/user_history.model';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 @Component({
   selector: 'app-datadisplay-detail',
   templateUrl: './datadisplay_detail.component.html',
   styleUrls: ['./datadisplay_detail.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, AvatarModule, AvatarGroupModule],
   providers: [PassCrudService, RefillCrudService, UserHistoryService],
 })
 export class DatadisplayDetailComponent implements OnInit {
@@ -25,20 +27,6 @@ export class DatadisplayDetailComponent implements OnInit {
   isPassDataFavorite: boolean = false;
   comments: Comment[] = [];
   newComment: string = '';
-  icons: string[] = [
-    '😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😆', '😉', '😊',
-    '😋', '😎', '😍', '😘', '🥰', '😗', '😙', '😚', '🙂',
-    '🤗', '🤩', '🤔', '🤨', '😐', '😑', '😶', '🙄', '😏', '😣',
-    '😥', '😮', '🤐', '😯', '😪', '😫', '🥱', '😴', '😌', '😛',
-    '😜', '😝', '🤤', '😒', '😓', '😔', '😕', '🙃', '🤑', '😲',
-    '☹️', '🙁', '😖', '😞', '😟', '😤', '😢', '😭', '😦', '😧',
-    '😨', '😩', '🤯', '😬', '😰', '😱', '🥵', '🥶', '😳', '🤪',
-    '😵', '😠', '😷', '🤒', '🤕', '🤢', '🤮', '🤧',
-    '😇', '🥳', '🥴', '🥺', '🤠', '🤡', '🤥', '🤫', '🤭', '🧐',
-    '🤓', '😈', '👿', '👹', '👺', '💀', '👻', '👽', '👾', '🤖',
-    '😺', '😸', '😹', '😻', '😼', '😽', '🙀', '😿', '😾'
-  ];
-
 
   constructor(
     private route: ActivatedRoute,
@@ -134,20 +122,23 @@ export class DatadisplayDetailComponent implements OnInit {
   addComment(): void {
     if (this.userId && this.data && this.newComment.trim()) {
       const comment = this.newComment.trim();
-      this.userHistoryService.addCommentToHistory(this.userId, this.data.id!, comment).subscribe(
-        () => {
-          this.loadComments(this.data!.id!);
-          this.newComment = '';
-        },
-        (error) => {
-          console.error('Error al añadir el comentario:', error);
-        }
-      );
+      const createdBy = localStorage.getItem('username');
+  
+      if (createdBy) {
+        this.userHistoryService.addCommentToHistory(this.userId, this.data.id!, comment, createdBy).subscribe(
+          () => {
+            this.loadComments(this.data!.id!);
+            this.newComment = '';
+          },
+          (error) => {
+            console.error('Error al añadir el comentario:', error);
+          }
+        );
+      } else {
+        console.error('No se encontró el username en el localStorage');
+      }
     }
   }
+  
 
-  getRandomIcon(): string {
-    const randomIndex = Math.floor(Math.random() * this.icons.length);
-    return this.icons[randomIndex];
-  }
 }

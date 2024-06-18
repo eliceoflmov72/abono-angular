@@ -11,10 +11,12 @@ export class UserHistoryService {
 
   constructor(private http: HttpClient) {}
 
+  // Obtener historial de usuario
   getUserHistory(userId: string): Observable<UserHistory> {
     return this.http.get<UserHistory>(`${this.apiUrl}/${userId}`);
   }
 
+  // Añadir un abono favorito al historial de usuario
   addPassToHistory(userId: string, passId: string): Observable<void> {
     return this.http.post<void>(
       `${this.apiUrl}/add`,
@@ -23,6 +25,7 @@ export class UserHistoryService {
     );
   }
 
+  // Eliminar un abono favorito del historial de usuario
   removePassFromHistory(userId: string, passId: string): Observable<void> {
     return this.http.post<void>(
       `${this.apiUrl}/remove`,
@@ -31,18 +34,21 @@ export class UserHistoryService {
     );
   }
 
+  // Anadir un comentario al historial de usuario
   addCommentToHistory(
     userId: string,
     passId: string,
     comment: string,
+    createdBy: string
   ): Observable<void> {
     return this.http.post<void>(
       `${this.apiUrl}/comment/add`,
-      { userId, passId, comment },
-      { responseType: 'text' as 'json' },
+      { userId, passId, comment, createdBy },
+      { responseType: 'text' as 'json' }
     );
   }
 
+  // Obtener todos los comentarios para un solo abono
   getAllCommentsForPass(passId: string): Observable<Comment[]> {
     return this.http.get<Comment[]>(`${this.apiUrl}/comments/${passId}`);
   }

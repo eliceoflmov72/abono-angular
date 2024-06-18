@@ -17,9 +17,9 @@ import {
   imports: [ReactiveFormsModule, RouterLink, CommonModule],
 })
 export class RegisterComponent {
-  registerForm: FormGroup;
-  submitted = false;
-  errorMessage: string = '';
+  registerForm: FormGroup; // Formulario de registro
+  submitted = false; // Indicador de envío de formulario
+  errorMessage: string = ''; // Mensaje de error
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,32 +27,32 @@ export class RegisterComponent {
     private router: Router,
   ) {
     this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      profileImage: [''],
+      name: ['', Validators.required], // Campo nombre con validación
+      username: ['', Validators.required], // Campo usuario con validación
+      email: ['', [Validators.required, Validators.email]], // Campo email con validación
+      password: ['', [Validators.required, Validators.minLength(6)]], // Campo contraseña con validación
+      profileImage: [''], // Campo imagen de perfil
     });
   }
 
   get f() {
-    return this.registerForm.controls;
+    return this.registerForm.controls; // Acceso a controles del formulario
   }
 
   submitForm() {
-    this.submitted = true;
+    this.submitted = true; // Marcar como enviado
 
     if (this.registerForm.invalid) {
-      return;
+      return; // Si el formulario es inválido, no continuar
     }
 
     this.authService.register(this.registerForm.value).subscribe(
       (response) => {
-        console.log('Registro exitoso', response);
-        this.router.navigate(['/login']);
+        console.log('Registro exitoso', response); // Registro exitoso
+        this.router.navigate(['/login']); // Redirigir a inicio de sesión
       },
       (error) => {
-        this.errorMessage = error.error.message;
+        this.errorMessage = error.error.message; // Mostrar mensaje de error
         console.error('Error al registrar el usuario', error);
       },
     );

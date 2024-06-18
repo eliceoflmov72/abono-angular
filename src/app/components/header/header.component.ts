@@ -11,13 +11,14 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  username: string | null = '';
-  isUserAdmin: boolean = false;
-
-  constructor(private authService: AuthService) {}
-
+  username: string | null = ''; // Nombre de usuario
+  isUserAdmin: boolean = false; // Indica si el usuario es admin
+  
+  constructor(private authService: AuthService) {} // Inyecta el servicio de autenticación
+  
   ngOnInit() {
-    this.username = this.authService.getUsername();
-    this.isUserAdmin = this.authService.getTipo() === 'admin';
+    this.username = this.authService.getUsername(); // Obtiene el nombre de usuario
+    this.isUserAdmin = this.authService.getTipo() === 'admin'; // Verifica si el usuario es admin
   }
+  
 }

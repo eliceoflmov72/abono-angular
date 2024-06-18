@@ -19,65 +19,65 @@ export const routes: Routes = [
     path: '',
     component: HomeComponent,
     title: 'Inicio',
-    canActivate: [canActivate],
+    canActivate: [canActivate], // Guard de la atenticación
   },
   {
     path: 'contact-form',
     component: ContactFormComponent,
     title: 'Contactar',
-    canActivate: [canActivate],
+    canActivate: [canActivate], // Guard de la atenticación
   },
   {
     path: 'map',
     component: MapComponent,
     title: 'Mapa',
-    canActivate: [canActivate],
+    canActivate: [canActivate], // Guard de la atenticación
   },
   {
     path: 'datadisplay',
     component: DatadisplayComponent,
     title: 'Información',
-    canActivate: [canActivate],
+    canActivate: [canActivate], // Guard de la atenticación
   },
   {
     path: 'datadisplay/:id',
     component: DatadisplayDetailComponent,
     title: 'Información detallada',
-    canActivate: [canActivate],
+    canActivate: [canActivate], // Guard de la atenticación
   },
   {
     path: 'pass_list',
     component: PassListComponent,
     title: 'Listado',
-    canActivate: [canActivate, RoleGuard],
+    canActivate: [canActivate, RoleGuard], // Guard de la autenticación y roles
     data: { tipo: ['admin'] },
   },
   {
     path: 'pass_detail/:id',
     component: PassDetailComponent,
     title: 'Información detallada',
-    canActivate: [canActivate, RoleGuard],
+    canActivate: [canActivate, RoleGuard], // Guard de la autenticación y roles
     data: { tipo: ['admin'] },
   },
   {
     path: 'refill_list',
     component: RefillListComponent,
     title: 'Listado',
-    canActivate: [canActivate, RoleGuard],
+    canActivate: [canActivate, RoleGuard], // Guard de la autenticación y roles
     data: { tipo: ['admin'] },
   },
   {
     path: 'refill_detail/:id',
     component: RefillDetailComponent,
     title: 'Información detallada',
-    canActivate: [canActivate, RoleGuard],
+    canActivate: [canActivate, RoleGuard], // Guard de la autenticación y roles
     data: { tipo: ['admin'] },
   },
   {
     path: 'profile',
     component: ProfileComponent,
     title: 'Perfil',
-    canActivate: [canActivate],
+    canActivate: [canActivate], // Guard de la atenticación
   },
   { path: 'auth/register', component: RegisterComponent, title: 'Registro' },
   { path: 'auth/login', component: LoginComponent, title: 'Iniciar Sesión' },

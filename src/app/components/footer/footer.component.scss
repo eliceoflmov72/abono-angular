@@ -20,8 +20,8 @@
   filter: grayscale(0%);
 }
 
-.rrss a i:hover {
-  transform: scale(1.5);
+.rrss a i:hover, .enlaces  a:hover{
+  transform: scale(1.5) !important;
   transition: 0.3s ease-in-out;
   color: #ffffff;
   text-shadow: 0 0 5px rgba(#ffffff, 0.7);
@@ -48,9 +48,11 @@ a {
   }
 }
 
-@media (max-width: 768px) {
-  .container-fluid {
-    position: relative;
-    left: 0;
-  }
+p-messages {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  width: 320px !important;
+  z-index: 1000;
+  padding: 0 !important;
 }

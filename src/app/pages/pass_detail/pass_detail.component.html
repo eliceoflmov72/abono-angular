@@ -29,7 +29,7 @@
   </div>
   <div class="form-item">
     <label>Descripción:</label>
-    <textarea [(ngModel)]="data.description"></textarea>
+    <textarea [(ngModel)]="data.description"  maxlength="350"></textarea>
   </div>
   <div class="form-item">
     <label>Periodo de validez:</label>
@@ -44,7 +44,7 @@
   </div>
   <div class="form-item">
     <label>Precio:</label>
-    <input type="number" [(ngModel)]="data.price" />
+    <input type="number" step="0.01" [(ngModel)]="data.price" />
   </div>
   <div class="form-item">
     <label>Nombre de la imagen:</label>

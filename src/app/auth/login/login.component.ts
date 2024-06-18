@@ -17,9 +17,9 @@ import {
   imports: [ReactiveFormsModule, RouterLink, CommonModule],
 })
 export class LoginComponent {
-  loginForm: FormGroup;
-  submitted = false;
-  errorMessage: string = '';
+  loginForm: FormGroup; // Formulario de inicio de sesión
+  submitted = false; // Indicador de envío de formulario
+  errorMessage: string = ''; // Mensaje de error
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,29 +27,29 @@ export class LoginComponent {
     private router: Router,
   ) {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.email]], // Campo de correo electrónico con validación
+      password: ['', [Validators.required, Validators.minLength(6)]], // Campo de contraseña con validación
     });
   }
 
   get f() {
-    return this.loginForm.controls;
+    return this.loginForm.controls; // Acceso a los controles del formulario
   }
 
   submitForm() {
-    this.submitted = true;
+    this.submitted = true; // Marcar como enviado
 
     if (this.loginForm.invalid) {
-      return;
+      return; // Si el formulario es inválido, no continuar
     }
 
     this.authService.login(this.loginForm.value).subscribe(
       (response) => {
-        console.log('Inicio de sesión exitoso', response);
-        this.router.navigate(['/']);
+        console.log('Inicio de sesión exitoso', response); // Inicio de sesión exitoso
+        this.router.navigate(['/']); // Redirigir a la página de inicio
       },
       (error) => {
-        this.errorMessage = error.error.message;
+        this.errorMessage = error.error.message; // Mostrar mensaje de error
         console.error('Error al iniciar sesión', error);
       },
     );

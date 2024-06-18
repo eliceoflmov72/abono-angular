@@ -1,25 +1,14 @@
 <div *ngIf="data; else loading" class="container">
-  <button
-    [routerLink]="['/datadisplay']"
-    class="btn btn-secondary mb-6"
-    style="background-color: transparent; border: none"
-  >
-    <i
-      class="bi bi-arrow-left-circle-fill"
-      style="color: #99b8b2; font-size: 2rem"
-    ></i>
+  <button [routerLink]="['/datadisplay']" class="btn btn-secondary mb-6"
+    style="background-color: transparent; border: none">
+    <i class="bi bi-arrow-left-circle-fill" style="color: #99b8b2; font-size: 2rem"></i>
   </button>
 
   <div class="content">
     <h2>{{ data.name }}.</h2>
     <p>{{ data.description }}</p>
-    <img
-      *ngIf="data.image"
-      src="../../../assets/passes/{{ data.image }}"
-      alt="{{ data.name }} imagen"
-      width="400vw"
-      class="mb-3 align-self-center"
-    />
+    <img *ngIf="data.image" src="../../../assets/passes/{{ data.image }}" alt="{{ data.name }} imagen" width="400vw"
+      class="mb-3 align-self-center" />
     <p><strong>Compañía:</strong> {{ data.company }}</p>
     <p><strong>Tipo:</strong> {{ data.type }}</p>
     <p><strong>Precio:</strong> {{ data.price }}</p>
@@ -35,18 +24,23 @@
       <h4>Periodo de validez:</h4>
       <p>
         <strong>Inicio.</strong><br />{{
-          data.valid_period.start_date | date: "longDate"
+        data.valid_period.start_date | date: "longDate"
         }}
       </p>
       <p>
         <strong>Finalización.</strong><br />{{
-          data.valid_period.end_date | date: "longDate"
+        data.valid_period.end_date | date: "longDate"
         }}
       </p>
     </div>
 
+    <!-- Botón para alternar los favoritos -->
+    <button (click)="setFavorite()" class="favoriteButton mt-5">
+      {{ isPassDataFavorite ? "Eliminar de favoritos" : "Añadir a favoritos" }}
+    </button>
+
     <div>
-      <h4 class="mt-4">Lugares de recarga:</h4>
+      <h4 class="mt-6">Lugares de recarga.</h4>
       <div *ngIf="refills.length > 0; else noRefills">
         <ul>
           <li *ngFor="let refill of refills">
@@ -58,7 +52,8 @@
             <p><strong>Coordenadas:</strong></p>
             <ul>
               <li *ngFor="let coord of refill.coordinates">
-                <strong>Punto número {{ refill.coordinates.indexOf(coord) + 1 }}</strong>.<br>Latitud: {{ coord.latitude }} - Longitud: {{ coord.longitude }}
+                <strong>Punto número {{ refill.coordinates.indexOf(coord) + 1 }}</strong>.<br>Latitud: {{ coord.latitude
+                }} - Longitud: {{ coord.longitude }}
               </li>
             </ul>
           </li>
@@ -71,20 +66,23 @@
       </ng-template>
     </div>
 
-    <!-- Botón para alternar los favoritos -->
-    <button (click)="setFavorite()" class="favoriteButton">
-      {{ isPassDataFavorite ? "Eliminar de favoritos" : "Añadir a favoritos" }}
-    </button>
-
     <!-- Sección de comentarios -->
     <div class="comments-section mt-5">
-      <h4>Comentarios:</h4>
+      <h4 class="mb-6">Comentarios.</h4>
       <div *ngFor="let comment of comments" class="comment">
-        <div>{{ getRandomIcon() }}</div>
-        <p>{{ comment.comment }}</p>
+        <p-avatar icon="pi pi-user" styleClass="mr-2" size="xlarge" />
+        <div>
+          <div class="text-base">{{ comment.comment }}
+            <div class="text-sm mt-1">
+              Por <em>{{ comment.createdBy }}</em> el {{ comment.createdAt | date: 'longDate' }}
+            </div>
+          </div>
+        </div>
+
       </div>
       <div class="add-comment mt-3">
-        <textarea [(ngModel)]="newComment" rows="3" class="form-control" placeholder="Añadir un comentario"></textarea>
+        <textarea [(ngModel)]="newComment" rows="3" class="form-control" placeholder="Añadir un comentario"
+          maxlength="300"></textarea>
         <button (click)="addComment()" class="btn btn-primary mt-2">Añadir Comentario</button>
       </div>
     </div>

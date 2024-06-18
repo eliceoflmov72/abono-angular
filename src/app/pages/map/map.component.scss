@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .map-container {
   height: 90vh;
   background-color: #a9d3df;
@@ -99,4 +103,16 @@
     border-bottom: 1px solid #ccc;
     width: 100%;
   }
+
+  :host {
+    display: block;
+    padding-bottom: 2.6rem;
+  }
+
+  .map-container {
+    height: 75vh;
+    background-color: #a9d3df;
+  }
 }
+
+

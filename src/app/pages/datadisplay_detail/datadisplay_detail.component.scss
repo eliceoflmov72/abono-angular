@@ -20,10 +20,12 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+
   li {
     margin-bottom: 1rem;
   }
 }
+
 .content {
   display: flex;
   flex-direction: column;
@@ -52,6 +54,7 @@ ul {
   transition: background-color 0.3s, transform 0.3s;
   width: 40%;
   font-size: clamp(0.9rem, 1.7vw, 1.2rem);
+
   &:hover {
     background-color: var(--primary-color-dark);
     transform: scale(1.05);
@@ -66,40 +69,53 @@ ul {
 .comments-section {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
+
 .comment {
   display: flex;
-  flex-flow: row;
+  flex-direction: row;
   gap: 1em;
   align-items: center;
-
-  div {
-    background-color: #ED9897;
-    border-radius: 50%;
-    min-width: 40px;
-    min-height: 40px;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
-                0 -4px 6px rgba(0, 0, 0, 0.1),
-                4px 0 6px rgba(0, 0, 0, 0.1),
-                -4px 0 6px rgba(0, 0, 0, 0.1);
-  }
-
-  p {
-    margin: 0;
-    padding: 0;
-    line-height: 0;
-    align-items: center;
-    justify-content: center;
-  }
+  width: 100%;
   margin-bottom: 1em;
-  margin-top: 1em;
-  
+  position: relative;
 }
+
+.comment > div {
+  flex-grow: 1; // Permite que los divs dentro de .comment ocupen el espacio disponible
+}
+
+.text-base {
+  background-color: #DEE2E6;
+  min-height: 64px;
+  padding: 1.8em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 3px;
+  width: 100%; // Asegura que ocupe todo el ancho del contenedor padre
+  max-width: 1000px;
+  font-size: clamp(0.8rem, 1.1vw, 1.4rem) !important;
+  position: relative; // Añadir posición relativa para contener a .text-sm
+}
+
+.text-sm:nth-child(1) {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.2em;
+  padding-right: 1em;
+  color: rgb(151, 151, 151);
+  font-size: .8em !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+
 
 
 @media screen and (max-width: 768px) {
