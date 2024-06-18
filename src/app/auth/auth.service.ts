@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+} from '@angular/common/http';
 import { Observable, of, throwError, interval } from 'rxjs';
 import { tap, switchMap, catchError } from 'rxjs/operators';
 
@@ -36,9 +40,9 @@ export class AuthService {
               localStorage.setItem('tipo', user.tipo);
               localStorage.setItem('createdAt', user.createdAt);
             }
-          })
+          }),
         );
-      })
+      }),
     );
   }
 
@@ -98,12 +102,12 @@ export class AuthService {
   // Refrescar token
   refreshToken(): Observable<any> {
     const token = this.getToken(); // Obtiene el token alamcenado en localStorage
-  
+
     // Si no hay token, lanza un error
     if (!token) {
       return throwError('No token found'); // Retorno un observable a los suscriptores
     }
-  
+
     // Realiza una solicitud POST al endpoint /refresh-token con el token actual
     return this.http.post<any>(`${this.apiUrl}/refresh-token`, { token }).pipe(
       // Operador tap maneja la respuesta del servidor, sin modificarla
@@ -118,10 +122,9 @@ export class AuthService {
         console.error('Error refreshing token:', error); // Imprime el error en la consola
         this.logout(); // Cierra la sesión si hay un error (remueve los datos del localStorage)
         return throwError(error); // Retorna un Observable que lanza el error
-      })
+      }),
     );
   }
-  
 
   // Programar refresco de token
   scheduleTokenRefresh(): void {

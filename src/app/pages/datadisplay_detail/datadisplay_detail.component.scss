@@ -40,7 +40,7 @@ ul {
 }
 
 .favoriteButton {
-  background-color: #C32928 !important;
+  background-color: #c32928 !important;
   border: none;
   color: white;
   padding: 0.5rem 1rem;
@@ -51,7 +51,9 @@ ul {
   margin: auto;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s, transform 0.3s;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
   width: 40%;
   font-size: clamp(0.9rem, 1.7vw, 1.2rem);
 
@@ -87,7 +89,7 @@ ul {
 }
 
 .text-base {
-  background-color: #DEE2E6;
+  background-color: #dee2e6;
   min-height: 64px;
   padding: 1.8em;
   margin: 0;
@@ -108,15 +110,12 @@ ul {
   padding: 0.2em;
   padding-right: 1em;
   color: rgb(151, 151, 151);
-  font-size: .8em !important;
+  font-size: 0.8em !important;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5em;
 }
-
-
-
 
 @media screen and (max-width: 768px) {
   .container {

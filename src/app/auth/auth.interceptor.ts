@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(
     request: HttpRequest<any>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<HttpEvent<any>> {
     const token = this.authService.getToken(); // Obtiene el token
     if (token) {
@@ -47,11 +47,11 @@ export class AuthInterceptor implements HttpInterceptor {
               this.isRefreshing = false; // Refrescamiento fallido
               this.authService.logout(); // Cierra sesión
               return throwError(err); // Devuelve el error
-            })
+            }),
           );
         }
         return throwError(error); // Devuelve otros errores
-      })
+      }),
     );
   }
 }

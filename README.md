@@ -2,7 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
 
-
 ## Table of Contents
 
 - [Description](#description)
@@ -16,6 +15,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 AbonoProyect is an application designed to share passes info.
 
 ## Installation
+
 https://github.com/eliceoflmov72/abono-angular
 
 ## Development server
@@ -42,12 +42,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-
 AbonoOnline License Agreement
 
 1. **Grant of License**. This software and associated documentation files (the "Software") are licensed, not sold, to you by AbonoOnline for use strictly in accordance with the terms of this License Agreement.
 
 2. **Restrictions**. You shall not:
+
    - Copy, modify, or create derivative works of the Software;
    - Distribute, transfer, sublicense, lease, lend, or rent the Software to any third party;
    - Reverse engineer, decompile, or disassemble the Software;

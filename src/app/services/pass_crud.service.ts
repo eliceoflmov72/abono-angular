@@ -16,11 +16,11 @@ export class PassCrudService {
   getPass(): Observable<Pass[]> {
     return this.http.get<Pass[]>(this.apiUrl).pipe(
       map((passes: any[]) =>
-        passes.map(pass => ({
+        passes.map((pass) => ({
           ...pass,
-          price: parseFloat(pass.price.$numberDecimal) // Convertir Decimal128 a número
-        }))
-      )
+          price: parseFloat(pass.price.$numberDecimal), // Convertir Decimal128 a número
+        })),
+      ),
     );
   }
 
@@ -29,8 +29,8 @@ export class PassCrudService {
     return this.http.get<Pass>(`${this.apiUrl}/${id}`).pipe(
       map((pass: any) => ({
         ...pass,
-        price: parseFloat(pass.price.$numberDecimal) // Convertir Decimal128 a número
-      }))
+        price: parseFloat(pass.price.$numberDecimal), // Convertir Decimal128 a número
+      })),
     );
   }
 
@@ -39,8 +39,8 @@ export class PassCrudService {
     return this.http.post<Pass>(this.apiUrl, data).pipe(
       map((pass: any) => ({
         ...pass,
-        price: parseFloat(pass.price.$numberDecimal) // Convertir Decimal128 a número
-      }))
+        price: parseFloat(pass.price.$numberDecimal), // Convertir Decimal128 a número
+      })),
     );
   }
 
@@ -49,8 +49,8 @@ export class PassCrudService {
     return this.http.put<Pass>(`${this.apiUrl}/${id}`, data).pipe(
       map((pass: any) => ({
         ...pass,
-        price: parseFloat(pass.price.$numberDecimal) // Convertir Decimal128 a número
-      }))
+        price: parseFloat(pass.price.$numberDecimal), // Convertir Decimal128 a número
+      })),
     );
   }
 

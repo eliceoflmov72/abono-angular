@@ -20,7 +20,8 @@
   filter: grayscale(0%);
 }
 
-.rrss a i:hover, .enlaces  a:hover{
+.rrss a i:hover,
+.enlaces a:hover {
   transform: scale(1.5) !important;
   transition: 0.3s ease-in-out;
   color: #ffffff;

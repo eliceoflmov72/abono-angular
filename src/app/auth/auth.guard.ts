@@ -10,7 +10,8 @@ import { AuthService } from './auth.service';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-export const canActivate: CanActivateFn = ( // Exportaciones para que se puedan usar
+export const canActivate: CanActivateFn = (
+  // Exportaciones para que se puedan usar
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot,
 ): Observable<boolean> => {

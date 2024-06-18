@@ -17,7 +17,13 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
   templateUrl: './datadisplay_detail.component.html',
   styleUrls: ['./datadisplay_detail.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, AvatarModule, AvatarGroupModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    AvatarModule,
+    AvatarGroupModule,
+  ],
   providers: [PassCrudService, RefillCrudService, UserHistoryService],
 })
 export class DatadisplayDetailComponent implements OnInit {
@@ -35,7 +41,7 @@ export class DatadisplayDetailComponent implements OnInit {
     private userHistoryService: UserHistoryService,
     private router: Router,
     private cdr: ChangeDetectorRef,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.userId = localStorage.getItem('userId');
@@ -115,7 +121,7 @@ export class DatadisplayDetailComponent implements OnInit {
       },
       (error) => {
         console.error('Error al obtener los comentarios:', error);
-      }
+      },
     );
   }
 
@@ -123,22 +129,22 @@ export class DatadisplayDetailComponent implements OnInit {
     if (this.userId && this.data && this.newComment.trim()) {
       const comment = this.newComment.trim();
       const createdBy = localStorage.getItem('username');
-  
+
       if (createdBy) {
-        this.userHistoryService.addCommentToHistory(this.userId, this.data.id!, comment, createdBy).subscribe(
-          () => {
-            this.loadComments(this.data!.id!);
-            this.newComment = '';
-          },
-          (error) => {
-            console.error('Error al añadir el comentario:', error);
-          }
-        );
+        this.userHistoryService
+          .addCommentToHistory(this.userId, this.data.id!, comment, createdBy)
+          .subscribe(
+            () => {
+              this.loadComments(this.data!.id!);
+              this.newComment = '';
+            },
+            (error) => {
+              console.error('Error al añadir el comentario:', error);
+            },
+          );
       } else {
         console.error('No se encontró el username en el localStorage');
       }
     }
   }
-  
-
 }

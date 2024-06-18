@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
     private authService: AuthService,
     private userHistoryService: UserHistoryService,
     private passCrudService: PassCrudService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {

@@ -39,12 +39,12 @@ export class UserHistoryService {
     userId: string,
     passId: string,
     comment: string,
-    createdBy: string
+    createdBy: string,
   ): Observable<void> {
     return this.http.post<void>(
       `${this.apiUrl}/comment/add`,
       { userId, passId, comment, createdBy },
-      { responseType: 'text' as 'json' }
+      { responseType: 'text' as 'json' },
     );
   }
 

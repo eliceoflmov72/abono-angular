@@ -23,18 +23,19 @@ export class AppComponent {
   title = 'abono-proyect'; // Título del proyecto
 
   showHeaderFooter: boolean = true; // Controla la visibilidad de header y footer
-  
+
   constructor(private router: Router) {} // Inyecta el servicio Router
-  
+
   ngOnInit(): void {
-    this.router.events.subscribe((event) => { // nos suscribimos al evento de navegación
-      if (event instanceof NavigationEnd) { // Valida si el evento si es del tipo
+    this.router.events.subscribe((event) => {
+      // nos suscribimos al evento de navegación
+      if (event instanceof NavigationEnd) {
+        // Valida si el evento si es del tipo
         const hiddenRoutes = ['/auth/register', '/auth/login']; // Rutas ocultas
-        this.showHeaderFooter = !hiddenRoutes.some((route) =>
-          event.urlAfterRedirects.includes(route), // Oculta header y footer en rutas específicas
+        this.showHeaderFooter = !hiddenRoutes.some(
+          (route) => event.urlAfterRedirects.includes(route), // Oculta header y footer en rutas específicas
         );
       }
     });
   }
-  
 }
