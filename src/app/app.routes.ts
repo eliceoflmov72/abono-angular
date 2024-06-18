@@ -13,6 +13,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ContactFormComponent } from './pages/contact-form/contact-form.component';
+import { TermsPoliticsComponent } from './pages/terms-politics/terms-politics.component';
 
 export const routes: Routes = [
   {
@@ -73,10 +74,17 @@ export const routes: Routes = [
     canActivate: [canActivate, RoleGuard], // Guard de la autenticación y roles
     data: { tipo: ['admin'] },
   },
+
   {
     path: 'profile',
     component: ProfileComponent,
     title: 'Perfil',
+    canActivate: [canActivate], // Guard de la atenticación
+  },
+  {
+    path: 'terms-politics',
+    component: TermsPoliticsComponent,
+    title: 'Términos y Políticas',
     canActivate: [canActivate], // Guard de la atenticación
   },
   { path: 'auth/register', component: RegisterComponent, title: 'Registro' },

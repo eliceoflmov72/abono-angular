@@ -159,10 +159,12 @@ export class MapComponent implements AfterViewInit {
           id = passMarkers[key].id ?? '';
           popupContent = `
             <strong>${passMarkers[key].name} & ${refillMarkers[key].name}</strong><br>
-            ${passMarkers[key].description}<br><br><br>
-            <strong>Información del lugar de recarga.</strong><br><br>${refillMarkers[key].description}<br>
-            <strong>Precio:</strong> ${passMarkers[key].price}€<br>
-            <button 
+            ${passMarkers[key].description}<br><br>
+            <strong>Precio:</strong> ${passMarkers[key].price}€<br><br><br>
+            <strong>Información del lugar de recarga.</strong><br><br>${refillMarkers[key].description}<br><br>
+            
+            <button
+              class="button-map"
               style="${buttonStyle}" 
               onclick="window.dispatchEvent(new CustomEvent('moreInfo', { detail: { type: 'both', id: '${id}' } }))">
               Más información
@@ -177,7 +179,8 @@ export class MapComponent implements AfterViewInit {
             <strong>${passMarkers[key].name}</strong><br><br>
             ${passMarkers[key].description}<br><br>
             <strong>Precio:</strong> ${passMarkers[key].price}€<br>
-            <button 
+            <button
+            class="button-map"
               style="${buttonStyle}" 
               onclick="window.dispatchEvent(new CustomEvent('moreInfo', { detail: { type: 'pass', id: '${id}' } }))">
               Más información
@@ -189,9 +192,10 @@ export class MapComponent implements AfterViewInit {
         } else if (refillMarkers[key]) {
           id = refillMarkers[key].passId ?? '';
           popupContent = `
-            ${refillMarkers[key].name}<br>
-            ${refillMarkers[key].description}<br>
+            <strong>${refillMarkers[key].name}</strong><br><br>
+            ${refillMarkers[key].description}<br><br>
             <button 
+            class="button-map"
               style="${buttonStyle}" 
               onclick="window.dispatchEvent(new CustomEvent('moreInfo', { detail: { type: 'refill', id: '${id}' } }))">
               Más información
